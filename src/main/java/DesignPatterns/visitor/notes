@@ -1,0 +1,17 @@
+Visitor design pattern
+1. Add an accept(Visitor) method to the "element" hierarchy
+2. Create a "visitor" base class w/ a visit() method for every "element" type
+3. Create a "visitor" derived class for each "operation" to do on "elements"
+4. Client creates "visitor" objects and passes each to accept() calls
+
+todo:
+https://manski.net/2013/05/the-visitor-pattern-explained/
+
+https://en.wikipedia.org/wiki/Visitor_pattern
+
+https://www.geeksforgeeks.org/visitor-design-pattern/
+
+
+
+https://www.hackerrank.com/challenges/java-vistor-pattern/problem
+http://javagoodpractices.blogspot.com/2019/04/java-visitor-pattern-hackerrank-solution.html

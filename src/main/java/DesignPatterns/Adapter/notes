@@ -1,0 +1,10 @@
+Adaptor
+
+Connecting new code to legacy -> without changing the existing contract (interface) that was produced from legacy code 
+Converting a legacy interface into another interface. When one portion of our code is legacy code which we can not change.
+Does NOT add any new functionality to the legacy api ( decorator patten does)
+examples:
+ +Arrays.asList() 
+ +Streams adaptors :  list.stream()
+Integer[] arrayOfInts = new Integer[]{1, 10, 100};
+List<Integer> listOfInt = Arrays.asList(arrayOfInts);

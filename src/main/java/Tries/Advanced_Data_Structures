@@ -1,0 +1,42 @@
+***TOP_PRIORITY_TO_READ*****
+
+Tries, radix trees, suffix trees
+http://www.cse.chalmers.se/edu/year/2018/course/DAT037_Datastrukturer/slides/12-tries.pdf
+A suffix tree is a radix tree that stores all suffixes of a given string
+Example: suffixes of “catinthehat” are:
+“catinthehat”, “atinthehat”, “tinthehat”, etc
+
+
+Suffix Trees (a special Radix Tree, Radix Tree is a compressed Trie)
+https://www.hackerearth.com/practice/data-structures/advanced-data-structures/suffix-trees/tutorial/
+"Suffix tree is a compressed trie of all the suffixes of a given string."
+Suffix trees help in solving a lot of "string related problems" like
+	 "pattern matching", 
+	 finding distinct substrings in a given string,
+	 finding longest palindrome
+
+Ternary Search Tree (special Trie)
+https://www.geeksforgeeks.org/ternary-search-tree/
+A ternary search tree is a "special trie" data structure where
+	 the child nodes of a standard trie are ordered as a 'binary search tree'.
+Representation of ternary search trees:
+	Unlike trie(standard) data structure where each node contains 26 pointers for its children, 
+	each node in a ternary search tree contains only 3 pointers:
+		1. The left pointer points to the node whose value is less than the value in the current node.
+		2. The equal pointer points to the node whose value is equal to the value in the current node.
+		3. The right pointer points to the node whose value is greater than the value in the current node.
+    Apart from above three pointers, each node has a field to indicate data(character in case of dictionary) and 
+    another field to mark end of a string.
+	So, more or less it is similar to BST which stores data based on some order.
+
+Suffix Arrays
+https://www.hackerearth.com/practice/data-structures/advanced-data-structures/suffix-arrays/tutorial/
+---------------------------------------------------------- 
+
+Segment Trees
+https://www.hackerearth.com/practice/data-structures/advanced-data-structures/segment-trees/tutorial/
+
+
+Fenwick (Binary Indexed) Trees
+https://www.hackerearth.com/practice/data-structures/advanced-data-structures/fenwick-binary-indexed-trees/tutorial/
+

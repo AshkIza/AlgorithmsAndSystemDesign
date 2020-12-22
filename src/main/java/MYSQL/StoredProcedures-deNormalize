@@ -1,0 +1,66 @@
+/* a store-procedure which optimize a multi-join querry (by denormalization)
+
+SQL  timeout issue:
+select distinct productord0_.id as col_0_0_ from riskinsight.product_order_pkg productord0_ inner join riskinsight.pop_preference_def popprefere1_ 
+on productord0_.id=popprefere1_.product_order_pkg_id 
+where popprefere1_.preference_key='mcl.integration.postback.enabled' and popprefere1_.source='PRODUCT' and popprefere1_.preference_value='true'
+ and not (exists (select 1 from riskinsight.pop_history_event pophistory2_ where pophistory2_.product_order_pkg_id=productord0_.id and 
+ 	(pophistory2_.event_category in ('MCL_EXPORT_SUCCESS' , 'MCL_EXPORT_EXPIRED')))) order by productord0_.id asc limit 100 
+
+
+Suggestions: 
+Add new column to pop_query_index for mcl_status / sami_status 
+	status = NULL, READY, COMPLETE, EXPIRED, FAILED or some sort of equivalent 
+	NULL would indicate that the product does not have MCL enabled 
+Modify the query to examine the query_index table 
+*/
+
+call sp01();
+drop procedure sp01;
+
+
+
+delimiter $$
+create procedure sp01()
+begin
+    DECLARE pop_history_event_category VARCHAR(255);
+    DECLARE finished INT default 0;
+    DECLARE pop_id INT;
+    DECLARE query_history_event_category VARCHAR(255);
+
+
+    DECLARE  c1 CURSOR FOR select distinct  pop_preference_def.product_order_pkg_id, pop_history_event.event_category from pop_preference_def
+        inner join pop_history_event on
+        pop_preference_def.product_order_pkg_id = pop_history_event.product_order_pkg_id
+        where
+        pop_preference_def.preference_key in ('mcl.integration.postback.enabled', 'sami.integration.postback.enabled') and
+        pop_preference_def.source = 'PRODUCT' and pop_preference_def.preference_value= 'true' and
+        pop_history_event.event_category in ('MCL_EXPORT_SUCCESS' , 'MCL_EXPORT_EXPIRED', 'BILLABLE_STATUS_UPDATED') ;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = 1;
+
+    alter table product_order_pkg_query_index add column IF NOT EXISTS  package_status varchar(255) default NULL;
+
+    OPEN c1;
+
+    loop01 : LOOP
+        FETCH c1 into pop_id, pop_history_event_category;
+
+        if(finished = 1) then
+            leave loop01;
+        end if;
+
+        if(pop_history_event_category = 'MCL_EXPORT_SUCCESS') then
+            SET query_history_event_category = 'SUCCESS';
+        end if;
+        if(pop_history_event_category = 'MCL_EXPORT_EXPIRED') then
+            SET query_history_event_category = 'EXPIRED';
+        end if;
+        if(pop_history_event_category = 'BILLABLE_STATUS_UPDATED') then
+            SET query_history_event_category = 'BILLABLE';
+        end if;
+        update   product_order_pkg_query_index set package_status = query_history_event_category
+        where product_order_pkg_id = pop_id;
+    end loop;
+end $$
+delimiter ;
+

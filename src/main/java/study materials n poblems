@@ -1,0 +1,181 @@
+Top 100+ data structure and algorithms interview questions in java
+https://medium.com/hackernoon/top-100-data-structure-and-algorithms-interview-questions-for-practice-d5071e92321e
+
+The top data structures you should know for your next coding interview
+https://www.freecodecamp.org/news/the-top-data-structures-you-should-know-for-your-next-coding-interview-36af0831f5e3/
+
+Top 10 Dynamic programming problems for interviews
+https://medium.com/@codingfreak/top-10-dynamic-programming-problems-5da486eeb360
+
+
+Dynamic Programming:
+https://leetcode.com/problems/jump-game/solution/
+ 			Usually, solving and fully understanding a dynamic programming problem is a 4 step process:
+					1-Start with the recursive backtracking solution
+					2-Optimize by using a memoization table (top-down[2] dynamic programming)
+					3-Remove the need for recursion (bottom-up dynamic programming)
+					4-Apply final tricks to reduce the time / memory complexity
+					
+			Approach 1: Dynamic Programming Top-down: 
+			Top-down Dynamic Programming can be thought of as optimized backtracking. 
+			It relies on the observation that once we determine that a certain index is good / bad, this result will never change.
+		 	This means that we can store the result and not need to recompute it every time. 
+		 		
+		 	Approach 2: Dynamic Programming Bottom-up
+		 	Top-down to bottom-up conversion is done by eliminating recursion(recursion : top-down). 
+		 	In practice, this achieves better performance as we no longer have the method stack overhead and might even benefit 
+		 	from some caching. More importantly, this step opens up possibilities for future optimization.
+			The "recursion is usually eliminated" by trying to "reverse the order of the steps from the top-down approach."
+
+		
+
+
+NP-Hard and NP-Complete Problems:
+NP-Hard Graph Problem - Clique Decision Problem
+https://www.youtube.com/watch?v=e2cF8a5aAhE&list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O&index=72
+https://www.youtube.com/watch?v=qZs767KQcvE&list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O&index=73
+P vs NP    (polynomial vs Non-deterministic polynomial)
+Satisfiability
+Reduction
+NP-Hard vs NP-Complete
+P=NP
+https://www.geeksforgeeks.org/np-completeness-set-1/
+
+
+
+Binary Tree (Types of Binary Tree)
+https://www.geeksforgeeks.org/binary-tree-set-3-types-of-binary-tree/
+
+1-"Full Binary Tree" :  A Binary Tree is full if every node has 0 or 2 children.
+	We can also say a full binary tree is a binary tree in which all nodes except leaves have two children.
+	In a Full Binary, number of leaf nodes is number of internal nodes plus 1
+       L = I + 1
+2- "Complete Binary Tree": A Binary Tree is complete Binary Tree if all levels are completely filled 
+	except possibly the last level and the last level has all keys as left as possible.
+	Practical example of Complete Binary Tree is "Binary Heap".
+3- "Balanced Binary Tree" : A binary tree is balanced if the height of the tree is O(Log n) where n is the number of nodes.
+	 For Example, AVL tree maintains O(Log n) height by making sure that the difference between heights of left and right subtrees is atmost 1. 
+	 Red-Black trees maintain O(Log n) height by making sure that the number of Black nodes on every root to leaf paths are same and there are no adjacent red nodes. 
+	 	Balanced Binary Search trees are performance wise good as they provide O(log n) time for search, insert and delete.
+4-"degenerate (or pathological) tree" : A Tree where every internal node has one child. 
+	Such trees are performance-wise same as linked list.
+
+'NO DUPLCATES IN BST'
+
+Drawbacks of BST (motivation for self-balancing trees):
+Height (shape) of BST is not in control (depends on insertion order). heigh (BST) : Log(n) -> n 
+height-balanced Trees ( BST improvement):
+balance factor (BF) = height(leftSubtree) - height(rightSubtree)
+   -1<= bf <= 1 : balanced-tree --> AVL tree / Red-black tree
+in height-balanced trees, Root always rotate to maintain BF factor within its limits. Always dealing with rotating 3-nodes   
+	
+
+AVL tree:
+10.1 AVL Tree - Insertion and Rotations
+https://www.youtube.com/watch?v=jDM6_TnYIqE&list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O&index=76
+AVL Trees
+-----------------
+Binary Search Trees
+Drawbacks of Binary Search Tree
+What are AVL Trees
+Rotations in AVL Trees
+Creating AVL Trees
+
+AVL trees were the first self-balancing tree structures.
+ They have been generally overtaken by red-black trees in popularity since.
+https://brilliant.org/wiki/avl-tree/
+
+
+Red Black Tree: (videos from SanDiego state university)
+https://www.youtube.com/watch?v=nMExd4DthdA&list=PLpPXw4zFa0uKKhaSz87IowJnOTzh9tiBk&index=66
+Red Black Tree 1 The Rules
+Red Black Trees 2 Example of building a tree
+Red Black Tree 3 - Classes
+Red Black Tree 4 - Add methods
+Red Black Tree 5 checking violations in the tree
+Red Black Tree 6 The Rotate method
+Red Black Tree 7 left rotate
+Red Black Tree 8 leftRightRotate
+
+Java TreeMap is a Red-Black tree based implementation of Java’s Map interface.
+https://www.callicoder.com/java-treemap/
+TreeSet uses a self-balancing binary search tree, more specifically a Red-Black tree.
+https://www.baeldung.com/java-tree-set
+
+
+Red Black Tree vs AVL Tree
+https://www.geeksforgeeks.org/red-black-tree-vs-avl-tree/
+
+Red Black Tree:
+Constraints maintained by Red Black Tree: 
+https://en.wikipedia.org/wiki/Red%E2%80%93black_tree
+1-Each node is either red or black.
+2-The root is black. This rule is sometimes omitted. Since the root can always be changed from red to black, but not necessarily vice versa, this rule has little effect on analysis.
+3-All leaves (NIL) are black.
+4-If a node is red, then both its children are black.
+E5-very path from a given node to any of its descendant NIL nodes contains the same number of black nodes.
+
+The "black height of a red–black tree" is the number of black nodes in any path from the root to the leaves,
+	 which, by the fifth constraint, is constant
+	 ->
+	 These constraints enforce a critical property of red–black trees: 
+	 the path from the root to the farthest leaf is no more than twice as long as the path from the root to the nearest leaf.
+	   (The shortest possible path has all black nodes, and the longest possible path alternates between red and black nodes.)
+	   -> The result is that the tree is "roughly height-balanced". Since operations such as inserting, deleting, 
+	   and finding values require worst-case time proportional to the height of the tree,
+	   this theoretical upper bound on the height allows red–black trees to be efficient in the worst case,
+	   unlike ordinary binary
+	 
+
+AVL(Adelson-Velskii and Landis) Tree:
+Height difference of left and right subtree of node should be less than 2.
+Re-balancing is done when heights of two child subtrees of a node differ by more than one.
+Faster retrievals as strictly balanced.
+
+Difference:
+AVL trees provide "faster lookups" than Red Black Trees because they are more strictly balanced.
+Red Black Trees provide "faster insertion and removal" operations than AVL trees as fewer rotations are done due to relatively relaxed balancing.
+AVL trees store balance factors or heights with each node, thus requires storage for an integer per node whereas Red Black Tree requires only 1 bit of information per node.
+Red Black Trees are used in most of the language libraries like map, multimap, multiset in C++ whereas 
+	AVL trees are used in databases where faster retrievals are required.
+
+
+
+
+B and B+ Trees (used for implemented multi-level indexing for databases) - self-managed multilevel indexing structure
+10.2 B Trees and B+ Trees. How they are useful in Databases
+https://www.youtube.com/watch?v=aZjYr87r1b8&list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O&index=77
+
+
+
+
+
+Sorting Algorithms
+
+Stable Sorting / in-place sorting 
+https://www.javatpoint.com/daa-stable-sorting
+Stable Sorting:
+A sorting algorithm is said to be stable if two objects with equal keys 
+	appear in the same order in sorted output as they appear in the input unsorted array.
+A Stable Sort is one which preserves the original order of input set,
+	 where the comparison algorithm does not distinguish between two or more items.
+
+Some Sorting Algorithms are "stable by nature" --> "Insertion Sort", "Merge Sort" and "Bubble Sort" etc.
+Sorting Algorithms are "not stable" -->  "Quick Sort", "Heap Sort" etc.
+
+In Place Sorting Algorithm: (extra space complexity O(1))
+	An In-Place Sorting Algorithm directly modifies the list that is received as input instead of creating a new list that is then modified
+	In-Place, Sorting Algorithm updates input only through replacement or swapping of elements.
+	An Algorithm can only have a constant amount of extra space, 
+		counting everything including function call and Pointers, Usually; this space is O (log n).
+NOTE:	
+"Bubble sort" and "insertion sort" are "stable" and "in-place" algorithms 		
+"selection sort" is "in-place but "not stable" (without significant modifications).
+"Merge sort" is a "stable algorithm" but "not in-place" algorithm (requires extra array storage).
+"Quicksort" and "Heap sort" ->  "not stable" but "in-place" algorithms.
+
+
+
+Trie vs BST vs HashTable (TODO : READ IT!)
+https://thenextcode.wordpress.com/2015/04/12/trie-vs-bst-vs-hashtable/
+

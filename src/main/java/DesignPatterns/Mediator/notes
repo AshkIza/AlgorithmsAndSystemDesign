@@ -1,0 +1,41 @@
+Behavarial patterns: how objects interact with each other (by loosely coupling the objects)
+Mediate meaning :
++ intervene between people in a dispute in order to bring about an agreement or reconciliation
++connected indirectly through another person or thing; involving an intermediate agency.
+
+Mediator pattern:
+https://sourcemaking.com/design_patterns/mediator
+-achieve loose coupling - How object interact with each other without they refer to each other explicitly 
+-Well-defined objects with complex relationships with each other (inter-object communication)
+-Mediator acts as hub/router where all inter-object communication are routed to (all inter-communications extracted from objects and encapsulated in mediator)
++ we split a many-to-many communication between objects (colleagues) to 
+   Many-to-one (mediator) /  (mediator) one-t0-many communication
+Colleges do NOT know about each other. Mediator knows about all colleagues and how they communicate. Any communication among colleagues happens only through a mediator. . Mediator acts as a hub/router. 
+This makes colleagues to be loosely-coupled to each other -> each colleague can be modified/extended without need to change other colleague (only change mediator - the section for this colleague)
+
+When to use: 
+During designing a solution to a problem, if you encounter a situation where multiple objects need to interact with each other to process the request, but direct communication may create a complex system, you can consider using mediator pattern.
+The pattern lets you “extract all the communication between classes into a separate class - I.e. mediator”, isolating any changes to a specific component (colleague) from the rest of the components.
+
+pitfall:
+Be careful of its complexity - NOT TO BECOME A Deity (GOD) object
+Usually used in conjunction with Command pattern
+
+Mediator vs Observer:
+Both does object decoupling - loosely-coupling
+Mediator is defining loose-coupling for Many-to-Many object communications
+Observer is one-to-many broadcast (communication) - from observable to observers
+
+Adding new objects relations/communication 
+Means updating same mediator 
+Means adding another observer
+
++examples: 
+Java:
+Java.util.Timer through schedule method
+Java.lang.reflect.Method through invoke() method
+Chat messenger
+https://www.journaldev.com/1730/mediator-design-pattern-java
+https://howtodoinjava.com/design-patterns/behavioral/mediator-pattern/
+Air traffic control
+https://www.javacodegeeks.com/2019/09/mediator-design-pattern-java.html

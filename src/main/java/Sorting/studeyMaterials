@@ -1,0 +1,62 @@
+Sorting Algorithms
+https://brilliant.org/wiki/sorting-algorithms/
+Quick Sort
+Insertion Sort
+Radix Sort
+Heap Sort
+Bubble Sort
+Merge Sort
+Counting Sort
+
+Why quicksort is more popular than radix-sort?:
+https://stackoverflow.com/questions/3539265/why-quicksort-is-more-popular-than-radix-sort
+
+1-Quicksort/Introsort is more flexible:
+	Quicksort and Introsort work well with "all kinds of data". All you need for sorting is the possibility to compare items.
+      This is trivial with numbers but you can sort other data as well.(can use comparator)
+	Radix sort on the other hand just sorts things by "their binary representation".
+	  It never compares items against each other. (can NOT use comparator)
+
+2-Radix sort needs more memory.
+All radix sort implementations that I've seen "use a 'secondary buffer' to store partial sorting results". 
+	This increases the memory requirements of the sorting algorithm. 
+	That may not be a problem if you only sort a couple of kilobytes, 
+		but if you go into the gigabyte range it makes a huge difference.
+
+"radix mean base"
+the base of a system of numeration.
+
+
+Radix Sort Algorithm (a stable sort)
+https://www.programiz.com/dsa/radix-sort
+https://brilliant.org/wiki/radix-sort/
+Radix sort is an integer sorting algorithm that sorts data with integer keys by grouping the keys by individual digits 
+	that share the same significant position and value (place value). 
+	Radix sort uses counting sort as a subroutine to sort an array of numbers. Because integers can be used to represent strings
+	 (by hashing the strings to integers), radix sort works on data types other than just integers.
+    Because radix sort is not comparison based, it is not bounded by \Omega(n \log n)Ω(nlogn) for running time
+    	 — in fact, radix sort can perform in linear time.
+time complexity: O(d(n+b)) --> better than 0(n logn)
+Radix sort takes in a list of n integers which are in base b (the radix) and so each number has at most d digits
+ 	where d = floor(log_b(k) +1) and k is the largest number in the list. 
+ 	It is important that radix sort can work with any base since the running time of the algorithm, O(d(n+b)),
+ 	 depends on the base it uses. The algorithm runs in linear time when b and n are of the same size magnitude. --> O(n)
+
+
+DC3 Algorithm : an application of radix sort
+http://spencer-carroll.com/the-dc3-algorithm-made-simple/
+The DC3 algorithm is a powerful "linear time suffix sorting algorithm".
+ If you’re not familiar with suffix sorting, it is the process in which 
+ 	you sort the different parts of a single string. 
+For example banana suffix sorted would be:
+a
+ana
+anana
+banana
+na
+nana
+
+Efficient suffix sorting is needed in data compression, and substring matching.
+	 Practically speaking, suffix sorting can be used
+	  to search for text in an ebook, 
+	  identifying long repeated sequences of DNA in a genome,  etc.

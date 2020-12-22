@@ -1,0 +1,113 @@
+Integer Hash Function:
+https://gist.github.com/badboy/6267743
+	easiest hash function for int:  int % hashTableSize
+
+
+Good Hash Function for Strings 
+https://stackoverflow.com/questions/2624192/good-hash-function-for-strings
+int hashCode(String string){
+	int hash = 0;
+	for(int i = 0 ; i < string.length(); i++){
+		hash = hash * 31 + string.charAt(i);// converting char to ascii integer value
+	}
+	return hash % MAX_SIZE;
+}
+Hashes 4 Hash Functions for Strings:
+https://www.youtube.com/watch?v=jtMwp0FqEcg&list=PLpPXw4zFa0uKKhaSz87IowJnOTzh9tiBk&index=28
+
+hashCode() giving negative values in Java (Negative hashcode is perfectly valid)
+https://stackoverflow.com/questions/9249983/hashcode-giving-negative-values
+sometimes the hashcode calculation itself goes beyond the Integer.MAX_VALUE, i.e 2147483647.
+	 what happens then is that we get a negative integer after the overflow.
+	 "Negative hashcode is perfectly valid!"
+you need to adjust the hash() returned value based on your need:
+1- make it positive
+2- adjust the value within your hash table size (M)
+	(key.hashCode() & 0x7fffffff) % M, 
+note on 0x7fffffff:
+  every byte can be represented by 2-digits in HEX : 0xFF --> 1111 1111 (binary)
+                                                     0x7F --> 0111 1111
+  int is java has 4 bytes :
+  		0x7fffffff & n = set the left-most bit (sign-bit) to 0 --> all positive integers have sign-bit of 0
+	 	makes n positive 
+	 
+
+
+---->
+Hashing (interviewbit)
+https://www.interviewbit.com/tutorial/introduction-to-hashing/
+Java String hashCode
+
+public int hashCode(String string){
+	int hash = 0;
+	for(int i = 0 ; i < string.length(); i++){
+		hash = hash * 31 + string.charAt(i);// converting char to ascii integer value
+	}
+	return hash % MAX_SIZE;
+}
+Java Integer hashCode
+//equal to the primitive int value represented by Integer
+public int hashCode() {
+     return value;
+}
+Now we come to one of the most popular data structures in Java, HashMap. 
+    HashMap<Integer, Integer> A = new HashMap<Integer, Integer>(); // declares an empty map.
+Insertion/retrieval/search is O(1)
+     A.put(key, value); // O(1) time on average
+     A.get(K) // O(1) average time. O(n) rare worst case
+     A.containsKey(K) // O(1) average time. O(n) rare worst case
+     A.size()  // O(1)
+    
+
+
+----->
+difference between "Hashing", "Encryption", and "Encoding":
+https://cheapsslsecurity.com/blog/explained-hashing-vs-encryption-vs-encoding/
+https://www.geeksforgeeks.org/encryption-encoding-hashing/
+
+Hashing: A string of numbers generated to confirm the integrity of data through hashing algorithms.
+Encryption: A technique used to maintain the confidentiality of data by converting the data into an undecipherable format.
+Encoding: A conversion of data from one format to another format.
+
+Encoding
+Unlike Encryption and Hashing, Encoding is not used for security purpose.
+ Fundamentally, it is just a technique to transform data into other formats so that it can be consumed by numerous systems. 
+ There is "no use of keys in encoding". The algorithm that is used to encode the data is used to decode it as well. 
+ ASCII and UNICODE are examples of such algorithms.
+ 
+Encryption
+Encryption keeps data "secured and confidential". Fundamentally, it is the process of transforming your confidential data into
+ an unreadable format so that no hacker or attacker can manipulate or steal it. Thereby, serving the purpose of 
+ "confidentiality".
+The encryption of data is executed through cryptographic keys. 
+ The information is encrypted before it’s sent and decrypted by the receiver. 
+ Therefore, the data is safe when it is “in the air.”
+Symmetric Encryption: In symmetric encryption, the data is encrypted and decrypted using a single cryptographic key.
+	 It means that the key used for encryption is used for decryption as well.
+Asymmetric Encryption: It involves the use of two different keys, one for encryption and one for decryption purposes.
+	 One key is known as a ‘Public Key’ and the other is regarded as a ‘Private Key.’
+  When you send any data to an encrypted site, it is encrypted using the Public Key. The Private Key, on the other hand,
+	is only with the receiver and must be kept discreet. Private Key is used to decrypt the encrypted data. 
+	The use of two distinct keys makes the encryption process 'more secure' and a 'tad slower'.
+Both these techniques are used in the SSL/TLS certificates.
+	 1)The Asymmetric Encryption is first applied to the 'SSL handshake process' — server validation.
+	 2)Once the connection is in place between the server and the client (after SSL-Handshake), Symmetric Encryption
+	  	 takes care of the data encryption.
+
+Hashing
+Hashing protects the "integrity of your data". It protects your data against potential alteration so that your data isn’t changed one bit.
+hash is a number that is generated from the text through a hash algorithm. This number is smaller than the original text.
+	1)The algorithm is designed in such a way that no two hashes are the same for two different texts. 
+	2)And it is impossible (almost!) to go back from the hash value to the original text.
+	
+	Even the tiniest bit of change/modification will alter the hash value completely.
+	This is called the Avalanche Effect.
+	  Text: Everybody loves donuts.
+		SHA-1 Hash value of the text above: daebbfdea9a516477d489f32c982a1ba1855bcd
+	  New text: Everybody loves donut.
+		SHA-1 Hash value of the new text: 8f2bd584a1854d37f9e98f9ec4da6d757940f388
+Uses of Hashing
+Hashing is an effective method to compare and avoid duplication in databases. (uniquess)
+Hashing can be used to find a specific piece of data in big databases.
+It is used in Digital signatures and SSL certificates.(integrity)
+ 

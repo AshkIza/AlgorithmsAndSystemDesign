@@ -1,0 +1,105 @@
+https://brilliant.org/courses/artificial-neural-networks/
+
+AI vs Machine Learning vs Deep Learning | Machine Learning Training with Python | Edureka
+https://www.youtube.com/watch?v=WSbgixdC9g8
+DL subset of ML subset of AI
+
+Natural Language Processing  (one application of ML)
+
+Natural Language Processing In 10 Minutes | NLP Tutorial For Beginners | NLP Training | Edureka
+https://www.youtube.com/watch?v=5ctbvkAMQO4
+
+Natural Language Processing: Crash Course Computer Science #36
+https://www.youtube.com/watch?v=fOvTtapxa9c
+
+NLP vs NLU vs NLG: NLP = NLU + NLG
+https://towardsdatascience.com/nlp-vs-nlu-vs-nlg-know-what-you-are-trying-to-achieve-nlp-engine-part-1-1487a2c8b696
+
+Natural Language Processing in TensorFlow:https://www.classcentral.com/course/natural-language-processing-tensorflow-13801
+
+TOP MACHINE LEARNING ALGORITHMS TO KNOW
+https://www.dataquest.io/blog/top-10-machine-learning-algorithms-for-beginners/
+https://towardsdatascience.com/top-10-machine-learning-algorithms-for-data-science-cdb0400a25f9
+
+TensorFlow Estimator APIs Tutorials (covers most of top ML algorithms)
+https://github.com/GoogleCloudPlatform/tf-estimator-tutorials
+Classification:
+	Regression
+	Clustering (k-means)
+	Time-series Analysis (AR Models)
+	Dimensionality Reduction (Autoencoding)
+	Sequence Models (RNN and LSTMs)
+	Image Analysis (CNN for Image Classification)
+	Text Analysis (Text Classification with embeddings, CNN, and RNN)
+
+
+Supervised Learning Algorithms:
+1. Linear Regression
+2. Logistic Regression
+3. CART : Classification and Regression Trees (CART) are one implementation of Decision Trees.
+4. Naïve Bayes
+5. KNN : The K-Nearest Neighbors algorithm uses the entire data set as the training set, rather than splitting the data set into a training set and test set.
+
+Unsupervised learning algorithms:
+6. Apriori
+7. K-means : K-means is an iterative algorithm that groups similar data into clusters.It calculates the centroids of k clusters and assigns a data point to that cluster having least distance between its centroid and the data point.
+8. PCA
+
+
+
+
+
+Unsupervised Learning Algorithms:
+
+
+
+The Google Cloud Developer's Cheat Sheet
+https://github.com/gregsramblings/google-cloud-4-words
+
+
+GCP DataFlow vs Dataproc
+https://www.hackingnote.com/en/versus/gcp-dataflow-vs-dataproc
+Hadoop was developed based on Google's The Google File System paper and the MapReduce paper.
+Hadoop got its own distributed file system called HDFS, and adopted MapReduce for distributed computing.
+  Then Hive, Pig were created to translate(and optimize) the queries into MapReduce jobs. 
+  But still MapReduce is very slow to run.
+  	 Then Spark was born to replace MapReduce, and also to support stream processing in addition to batch jobs.
+  	 
+Separately, 
+Google created its internal data pipeline tool on top of MapReduce, called "FlumeJava"(not the same and Apache Flume),
+ and later moved away from MapReduce. Another project called MillWheel was created for stream processing, 
+ now folded into "Flume". Part of the Flume was open sourced as Apache Beam.
+
+
+							----> Spark (opensource)      : GCP cloud Dataproc (GCP-Hosted Hadoop/Spark)
+GFS/Hadoop/HDFS/MapReduce --
+							----> Flume (internal google) : GCP cloud Dataflow
+							
+So both Flume and Spark can be considered as the next generation Hadoop/MapReduce. 
+	Cloud DataFlow is the productionisation, or externalization, of the Google's internal Flume; and 
+	Dataproc is a hosted service of the popular open source projects in Hadoop/Spark ecosystem. They share the same origin(Google's papers) but evolved separately.
+
+
+
+
+Data warehouse, business intelligence, and analytics,
+https://gravitatesolutions.com/data-warehouse-business-intelligence-analytics/
+
+What do Egress and Ingress mean in the cloud?
+https://a.aviatrix.com/learning/cloud-security-operations/egress-and-ingress/
+Egress in the world of networking implies traffic that exits an entity or a network boundary,
+	 while Ingress is traffic that enters the boundary of a network
+
+Network Address Translation (NAT)
+https://www.geeksforgeeks.org/network-address-translation-nat/
+Network Address Translation (NAT) is a process in which one or more local IP address is translated into one or more Global 
+IP address and vice versa in order to provide Internet access to the local hosts. 
+
+Difference between scaling horizontally and vertically
+https://github.com/vaquarkhan/vaquarkhan/wiki/Difference-between-scaling-horizontally-and-vertically
+Horizontal scaling means that you scale by adding more machines into your pool of resources whereas 
+Vertical scaling means that you scale by adding more power (CPU, RAM) to an existing machine.
+**Horizontal Scaling **- also referred to as "scale-out" is basically the addition of more machines or setting up a cluster or a distributed environment for your software system. This usually requires a load-balancer program which is a middle-ware component 
+in the standard 3 tier client-server architectural model.
+**Vertical Scaling** - also referred to as "scale-up" approach is an attempt to increase the capacity of a single machine :
+ By adding more processing power By adding more storage More memory etc

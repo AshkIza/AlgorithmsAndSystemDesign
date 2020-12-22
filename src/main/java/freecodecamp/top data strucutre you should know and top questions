@@ -1,0 +1,36 @@
+https://www.freecodecamp.org/news/the-top-data-structures-you-should-know-for-your-next-coding-interview-36af0831f5e3/
+
+The top data structures you should know for your next coding interview:
+
+Commonly asked "Linked List" interview questions:
+1) Reverse a linked list
+Detect loop in a linked list
+Return Nth node from the end in a linked list
+2)Remove duplicates from a linked list
+
+Commonly asked Tree interview questions
+Find the height of a binary tree
+Find kth maximum value in a binary search tree   (BinaarySearchTree02.java)
+Find nodes at “k” distance from the root
+Find ancestors of a given node in a binary tree  (BinaryTree.java)
+
+Commonly asked Graph interview questions
+Implement Breadth and Depth First Search
+Check if a graph is a tree or not
+Count number of edges in a graph
+Find the shortest path between two vertices
+
+Graph algorithms:
+BFS and DFS
+You should know breadth-first search (BFS) and depth-first search (DFS) down pat so you can code them up quickly.
+Lots of graph problems can be solved using just these traversals:
++Is there a path between two nodes in this undirected graph? Run DFS or BFS from one node and see if you reach the other one.
++What's the shortest path between two nodes in this undirected, unweighted graph? Run BFS from one node and backtrack once you reach the second. Note: BFS always finds the shortest path, assuming the graph is undirected and unweighted. DFS does not always find the shortest path.
++Can this undirected graph be colored with two colors? Run BFS, assigning colors as nodes are visited. Abort if we ever try to assign a node a color different from the one it was assigned earlier.
++Does this undirected graph have a cycle? Run BFS, keeping track of the number of times we're visiting each node. If we ever visit a node twice, then we have a cycle.
+
+Advanced graph algorithms
+If you have lots of time before your interview, these advanced graph algorithms pop up occasionally:
++Dijkstra's Algorithm: Finds the shortest path from one node to all other nodes in a weighted graph.
++Topological Sort: Arranges the nodes in a directed, acyclic graph in a special order based on incoming edges.
++Minimum Spanning Tree: Finds the cheapest set of edges needed to reach all nodes in a weighted graph.

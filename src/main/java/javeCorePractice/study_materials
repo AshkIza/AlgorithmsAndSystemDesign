@@ -1,0 +1,185 @@
+*****CORE JAVA TOP PRIORITY_TOREAD:
+https://www.geeksforgeeks.org/hashmap-methods-java-examples-set-2-keyset-values-containskey/
+https://www.javaworld.com/article/2073473/java-map-get-and-map-containskey.html
+https://www.baeldung.com/java-linked-hashmap
+
+https://docs.oracle.com/javase/tutorial/collections/interfaces/set.html
+https://docs.oracle.com/javase/tutorial/collections/implementations/set.html
+https://www.codejava.net/java-core/collections/java-sortedset-and-treeset-tutorial-and-examples
+
+https://www.geeksforgeeks.org/java-util-objects-class-java/
+https://dzone.com/articles/arrayshashcode-vs-objectshash
+https://stackoverflow.com/questions/5208133/collections-vs-arrays-regarding-sort
+
+https://howtodoinjava.com/array/convert-byte-array-string-vice-versa/
+https://stackoverflow.com/questions/1780385/java-hashmapstring-int-not-working
+
+https://www.google.com/search?q=List%3CList%3CInteger%3E%3E+results+%3D+new+ArrayList()%3B&rlz=1C5CHFA_enCA849CA849&oq=List%3CList%3CInteger%3E%3E+results+%3D+new+ArrayList()%3B&aqs=chrome..69i57j0l4.359j0j7&sourceid=chrome&ie=UTF-8
+https://www.daniweb.com/programming/software-development/threads/201479/use-of-list-int
+https://stackoverflow.com/questions/1073919/how-to-convert-int-into-listinteger-in-java
+
+https://www.tutorialspoint.com/how-to-display-numbers-in-scientific-notation-in-java
+----------------------------------------------     
+
+
+
+When to use a Singleton and when to use a static class [duplicate]
+https://softwareengineering.stackexchange.com/questions/235527/when-to-use-a-singleton-and-when-to-use-a-static-class
+A case where a static class might be a good idea is when you want to collect related pieces of functionality, 
+ "but you don't need to have any internal state" in any object. An example could be the Math class in Java. 
+ 
+A singleton is used when you do want an actual object (with its own internal state and everything), 
+ and you want to limit your system to exactly one instance of that object. 
+ This might be useful if you have some kind of shared resource, such as a database, an in-memory cache, or maybe some specialized piece of hardware like a robotic arm. Many parts of your program might want to use this resource and you might want to have all access to the resource go through a single point. 
+ 
+
+Java float / double data type
+http://www.c4learn.com/java/java-float-double-data-type/
+https://javarevisited.blogspot.com/2016/05/difference-between-float-and-double-in-java.html
+
+
+Java Convert char to int
+https://www.javatpoint.com/java-char-to-int
+1) Java char to int Example: Get ASCII value
+char ch = 'c';
+int asciCode = ch;
+
+Java Math round() method with Example
+https://www.geeksforgeeks.org/java-math-round-method-example/
+	public static int round(float val)
+		Parameter: val - floating-point value to be rounded to an integer.
+If the argument is NaN, the result is 0.
+If the argument is negative infinity or any value less than or equal to the value of Integer.MIN_VALUE, the result is equal to the value of Integer.MIN_VALUE.
+If the argument is positive infinity or any value greater than or equal to the value of Integer.MAX_VALUE, the result is equal to the value of Integer.MAX_VALUE.
+    // float numbers 
+      float x = 4567.9874f; 
+  
+      // find the closest int for these floats 
+      System.out.println(Math.round(x));  
+      
+      
+Java – String substring() Method 
+https://beginnersbook.com/2013/12/java-string-substring-method-example/
+String substring(int beginIndex)  
+String substring(int beginIndex, int endIndex)  :  
+	The substring begins at the specified beginIndex and extends to the character at index endIndex – 1. 
+	Thus the length of the substring is endIndex-beginIndex. 
+	In other words you can say that "beginIndex is inclusive" and "endIndex is exclusive" while getting the substring
+
+
+***equals() and hashCode() methods in Java
+https://www.geeksforgeeks.org/equals-hashcode-methods-java/
+https://www.baeldung.com/java-hashcode
+https://www.geeksforgeeks.org/overriding-equals-method-in-java/
+https://www.javaworld.com/article/3305792/comparing-java-objects-with-equals-and-hashcode.html
+
+
+***Java Generic Arrays and Type Erasure : 
+Arrays does NOT support Type Erasure   T[] --> generic array creation error
+
+Why does Java prohibit generic array creation?
+https://www.quora.com/Why-does-Java-prohibit-generic-array-creation
+public class GenericArrayTest<T>{
+ 
+    // returns an array of the parameterised type  
+    public <T> T[] returnArray(){
+     return new T[10];   
+    }
+This causes a ‘generic array creation’ error. 
+	As "arrays don’t support type erasure",
+	 the parametrized type  T does not exist at run-time, 
+	 the compiler cannot assign a run-time  type to the array created.  
+	 
+Type Erasure
+  https://docs.oracle.com/javase/tutorial/java/generics/erasure.html
+
+How to properly define an array of linked list in Java 
+ https://stackoverflow.com/questions/27654229/how-to-properly-define-an-array-of-linked-list-in-java/27654289
+
+why instanceof does not work with Generic? [duplicate]
+  https://stackoverflow.com/questions/14228637/why-instanceof-does-not-work-with-generic/14228654#14228654
+
+}
+
+
+
+
+
+JAVA COLLECTIONS:
+
+http://java2novice.com/java-collections-and-util/linkedlist/remove-methods/
+
+remove(): Retrieves and removes the head (first element) of this list.
+removeFirst(): Removes and returns the first element from this list.
+removeLast(): Removes and returns the last element from this list.
+remove(index): Removes the element at the specified position in this list.
+remove(object): Removes the first occurrence of the specified element from this list, if it is present.
+
+https://www.geeksforgeeks.org/java-util-linkedlist-poll-pollfirst-polllast-examples-java/
+Java’s Linked list class offers a function that allows a “Queue Based” working called poll().
+ This function not only returns deletes the first element, but also displays them while being deleted 
+1. poll() : This method retrieves and removes the head (first element) of this list.
+2. pollFirst() : This method retrieves and removes the first element of this list, or returns null if this list is empty.
+3. pollLast() : This method retrieves and removes the last element of this list, or returns null if this list is empty.
+
+LinkedList addFirst() Method in Java
+https://www.geeksforgeeks.org/linkedlist-addfirst-method-in-java/
+Syntax:	void addFirst(Object element)
+		Parameters: This function accepts a single parameter element as shown in the above syntax.
+ 					The element specified by this parameter is appended at beginning of the list
+
+JAVA MAPS
+
+
+Java TreeMap Tutorial with Examples
+https://www.callicoder.com/java-treemap/
+Java TreeMap is a Red-Black tree based implementation of Java’s Map interface.
+Since a TreeMap implements "NavigableMap" interface,
+ it has the functionalities of both the "NavigableMap as well as the SortedMap"
+1) A TreeMap is "always sorted based on keys". 
+	The sorting order follows the "natural ordering of keys".
+	 You may also provide a custom Comparator to the TreeMap at the time of creation to let it sort the keys using the supplied Comparator.
+2) A TreeMap "can NOT contain duplicate keys".
+3) TreeMap "can NOT contain the null key". However, It can have null values.
+4) TreeMap is "NOT synchronized". Access to TreeMaps must be synchronized explicitly in a multi-threaded environment.
+
+LinkedHashMap in Java
+https://www.baeldung.com/java-linked-hashmap
+
+
+
+----------------------------------------------------------------------------------------------------------------
+
+JAVA Arrays class 
+(java.util.Arrays)
+
+Arrays class in Java:
+https://www.geeksforgeeks.org/array-class-in-java/
+java.lang.Object
+ ↳ java.util.Arrays
+The Arrays class in java.util package is a part of the Java Collection Framework. 
+	This class provides static methods to dynamically create and access Java arrays.
+1) static <T> List<T> asList(T… a)
+2) copyOf(originalArray, newLength): This method copies the specified array, 
+	truncating or padding with the default value (if necessary) so the copy has the specified length.
+3) fill(originalArray, fillValue)	
+
+4) static boolean equals(array1, array2):
+5) static boolean deepEquals(Object[] a1, Object[] a2):
+
+6) hashCode(originalArray): This method returns an integer hashCode of this array instance.
+7) static int deepHashCode(Object[] a): This method returns a hash code based on the “deep contents” of the specified Arrays.
+
+8) String toString(Object[] a)
+9) String deepToString(Object[] a)
+NOTE: use deepHashCode deepToString deepEquals for 2-dimentioanl Arrays
+
+10) sort(originalArray): This method sorts the complete array in ascending order.
+11) sort(originalArray, fromIndex, endIndex): This method sorts the specified range of array in ascending order.
+12) static <T> void sort(T[] a, int fromIndex, int toIndex, Comparator< super T> c): 
+	This method sorts the specified range of the specified array of objects according to the order induced by the specified comparator.
+
+
+
+Arrays.hashCode() Vs. Objects.hash()
+

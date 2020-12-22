@@ -1,0 +1,56 @@
+
+2.6.3 Heap - Heap Sort - Heapify - Priority Queues
+https://www.youtube.com/watch?v=HqPJF2L5h9U&t=53s
+1. Array Representation of Binary Tree
+2. Complete Binary Tree
+3. Heap
+4. Heap Sort
+5. Heapify
+6. Priority Queue
+
+1 ) every binary tree can have an  array representation  where:
+      parent node:   array[i]
+      left node:     array[2 * i];
+      right node :   array[2* i + 1]
+      parent of i-th node : ceil(i/2) 
+      (when array starts at index = 1)
+      
+      parent node:   array[i]
+      left node:     array[2 * i + 1];
+      right node :   array[2* i + 2]
+      parent of i-th node : ceil((i-1)/2) 
+      (when array starts at index = 0)
+      
+2) full vs complete binary tree:
+full binary tree has maximum number of nodes : 2^(h+1)  - 1
+complete binary tree : is a full binary tree up to a level before last level, and all nodes in last level are filled from left side
+                     : when you right its array representation, there is no gap(null) elements in the array
+complete binary tree has the minimum height(which is log(n))  
+       (because we are not going to next level unless previous level is filled)
+3) heap : is a "complete" binary tree --> no gaps(null) in its array representation
+   max heap:
+   min heap:
+   
+Insertion and Deletion in Heaps
+https://www.geeksforgeeks.org/insertion-and-deletion-in-heaps/
+
+Heap Data Structure
+https://www.interviewcake.com/concept/java/heap
+https://www.techiedelight.com/introduction-priority-queues-using-binary-heaps/
+
+*heap interview questions:
+https://www.techiedelight.com/heap-interview-questions/
+
+QuickSort vs HeapSort
+https://www.programcreek.com/2012/11/quicksort-array-in-java/
+
+2.8.1 QuickSort Algorithm
+https://www.youtube.com/watch?index=9&list=PLb5mG-ZJqjufIPigFLpadcuElxh-irTgI&v=7h1s2SojIRw&t=0s&app=desktop
+
+2.7.2. Merge Sort Algorithm
+2-way merge sort(iterative) vs merge sort (recursive)
+https://www.youtube.com/watch?v=mB5HXBb_HY8
+https://www.youtube.com/watch?v=6pV2IF0fgKY
+
+
+

@@ -1,0 +1,39 @@
+When to use decorator (wrapper) instead of subclassing:
+
+1) we have lots of concrete components, which resulted in multi-level inheritence hierarchy
+baseComponent 
+concreteComponent01 extends baseComponent
+concreteComponent02 extends concreteComponent01
+concreteComponent03 extends concreteComponent02
+
+2) we do NOT access/override base class methods in superclass:
+ 	we are not changing sub-class functionalities in the super class -> 
+	 just using base class methods and add little extra functionality on top
+	  (we do NOT @override base components functionalities)
+
+decorator is still a concrete component, but we limit inheritance hierarchy to single level
+constructor requires instance from the hierarchy - an component to get decorated (composition))
+(utilized both composition and inheritance)
+alternate to subclass (subclass completely overrides base functionalities and can access private base methods)
+
+baseComponent
+decorator01 extends baseComponent
+decorator02 extends baseComponent
+
+baseComponent decoratedComponent = new decorator02(new decorator01(new baseComponent()));
+ we can daisy-chain decorators to meet all functionalities we want - (compose behavior dynamically)
+ each functionality in one decorator (single responsibility principle)
+ 
+ 
+ example in java:
+ java.io.inputStream/outputStream
+ 
+ 
+ Is Inheritance Dead? A Detailed Look Into the Decorator Pattern:
+ https://dzone.com/articles/is-inheritance-dead#:~:text=In%20contrast%20to%20inheritance%2C%20a,Testability%20and%20Other%20Benefits%20sections).
+ The decorator pattern provides a flexible alternative to inheritance for extending objects functionality.
+  This pattern is designed in a way that multiple decorators can be stacked on top of each other, 
+  each adding new functionality. 
+ In contrast to inheritance, a decorator can operate on any implementation of a given interface, 
+ 	which eliminates the need to subclass an entire class hierarchy
+

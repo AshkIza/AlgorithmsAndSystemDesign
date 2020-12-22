@@ -1,0 +1,116 @@
+
+Why There is no trie data structure in the core Java libraries:? 
+(Tries are special-case DS optimized for English character strings)
+https://stackoverflow.com/questions/7983906/is-there-a-trie-in-java
+1) This may be because "tries are usually designed to store character strings",
+	 while Java data structures are more general, usually holding any Object 
+	 (defining equality and a hash operation), 
+2) Here's another point to consider: when trying to implement a conventional trie in Java, you are quickly confronted with the fact that
+	 "Java supports Unicode.".
+	 To have any sort of space efficiency, you have to restrict the strings in your trie to some subset of symbols,
+	 	 or abandon the conventional approach of storing child nodes in an array indexed by symbol. 
+	 This might be another reason why "tries are not considered general-purpose enough" for inclusion in the core library
+
+
+Trie vs BST vs HashTable
+https://thenextcode.wordpress.com/2015/04/12/trie-vs-bst-vs-hashtable/
+Unlike most other algorithms, tries have the peculiar feature that the time to
+	 insert, or to delete or to find is almost identical because the code paths followed for each are almost identical. 
+	 As a result, for situations where code is inserting, deleting and finding in equal measure tries can handily beat 
+	 binary search trees, as well as being better for the CPU’s instruction and branch caches.
+The following are the main advantages of tries over binary search trees (BSTs):
+	1) "Looking up keys is faster". Looking up a key of length m takes worst case O(m) time.
+		 A BST performs O(log(n)) comparisons of keys, where n is the number of elements in the tree,
+		 because lookups depend on the depth of the tree, which is logarithmic in the number of keys if the tree is balanced
+	2) Tries are more space efficient when they contain a large number of short keys,
+		 because "nodes are shared between keys" with common initial subsequences.	 
+The following are the main advantages of tries over hash tables: (no collision or re-sizing)
+	1)Tries support ordered iteration (alphabetical ordering), whereas iteration over a hash table will result in a pseudorandom order 
+		given by the hash function (also, the order of hash collisions is implementation defined), which is usually meaningless.
+	2)Tries tend to be faster on average at insertion than hash tables because 
+		"hash tables must rebuild their index when it becomes full" – a very expensive operation.
+		 Tries therefore have "much better bounded worst case time" costs, which is important for latency sensitive programs.
+	3)"By avoiding the hash function", tries are generally faster than hash tables for small keys like integers and pointers.	 
+    4)Tries facilitate "longest-prefix matching", but hashing does not, as a consequence of the above. 
+    	Performing such a “closest fit” find can, depending on implementation, be as quick as an exact find.
+Applications : 
+1)As replacement of other data structures
+	As mentioned, a trie has a number of advantages over binary search trees.[4] A trie can also be used to replace a hash table
+2) Dictionary representation
+	A common application of a trie is storing a dictionary, such as one found on a mobile telephone. 
+	Such applications take advantage of a trie’s ability to quickly search for, insert, and delete entries
+3) approximate matching algorithms
+	Tries are also well suited for implementing "approximate matching algorithms",
+		 including those used in "spell checking" and "hyphenation" software.
+		
+	
+Advantages of Trie Data Structure
+https://www.geeksforgeeks.org/advantages-trie-data-structure/
+Tries is a tree that stores strings. Maximum number of children of a node is equal to size of alphabet. 
+	Trie supports search, insert and delete operations in O(L) time where L is length of key.
+Why Trie? 
+	a)With Trie, we can insert and find strings in O(L) time where L represent the length of a single word. 
+		This is obviously faster than BST. 
+		This is also faster than Hashing because of the ways it is implemented. 
+			We do not need to compute any hash function. No collision handling is required (like we do in open addressing and separate chaining)
+	b)Another advantage of Trie is, we can easily print all words in "alphabetical order" which is not easily possible with hashing.
+	c)We can efficiently do "prefix search" (or auto-complete) with Trie.
+Issues with Trie :
+  The final conclusion is regarding tries data structure is that they are faster but require huge memory for storing the strings.
+  		if space is concerned, then "Ternary Search Tree" can be preferred for dictionary implementations. 
+  		In Ternary Search Tree, the time complexity of search operation is O(h) where h is the height of the tree. 
+  		Ternary Search Trees also supports other operations supported by Trie like
+  			 prefix search, alphabetical order printing, and nearest neighbor search.
+
+-------------------------------------------------  
+
+
+Trie Data Structure Tutorial - Introduction to the Trie Data Structure
+https://www.youtube.com/watch?v=CX777rfuZtM
+
+
+Data Structures: Tries
+https://www.youtube.com/watch?v=zIjfhVPRZCg
+
+
+Tries: (Tries another implementation of dictionaries(maps) as opposed to hash tables) 
+       - usually for dictionaries with String key values
+https://brilliant.org/wiki/tries/
+
+Tries (also known as "radix trees" or "prefix trees") are tree-based data structures that are typically used to
+ store associative arrays where the keys are usually strings.
+Since they also implement associative arrays, tries are often compared to hash tables.
+  There are important pros and cons to consider when deciding whether to use a trie or a hash table, 
+  and it often comes down to how the associative array will be used
+
+ Also, there doesn't need to be a value at every node. In fact, values are typically only associated with leaf nodes. 
+ Building keys as you go is useful for specific applications, notably auto-complete
+Tries have many advantages over their counterpart, the hash table.
+  They are used in many string search applications such as auto-complete, text search, and prefix matching.
+  Radix trees, a kind of trie, are often used in IP routing.
+
+Applications: 
+- autocomplete 
+- approximate matching algorithms, like those used in "spell check".
+- String matching is another use case where tries and approximation algorithms are useful. 
+  Longest suffix or prefix matching uses these methods
+- sorting. Using a trie to do this is similar to radix sort.
+	 A pre-order traversal of the tree will result in an output that is in increasing order, allowing sorting.
+
+Radix tree :  https://en.wikipedia.org/wiki/Radix_tree
+a radix tree (also radix trie or compact prefix tree) is a data structure that
+ represents a "space-optimized trie" (prefix tree) in which each node that is the only child is merged with its parent.
+
+Trie interview questions:
+https://www.techiedelight.com/trie-interview-questions/
+
+1) trie implementation (insert, search , remove, print all words)
+2) longest common prefix from a given set of strings
+3) word break problem
+4) Implement a Dictionary using Trie
+
+
+extra resources: 
+Trying to Understand Tries
+https://medium.com/basecs/trying-to-understand-tries-3ec6bede0014
+

@@ -1,0 +1,118 @@
+Stored Procedures
+  Stored Procedures in Mysql part-1  https://www.youtube.com/watch?v=9uL_-rZHFlg
+  Stored Procedures in mysql part-2  https://www.youtube.com/watch?v=dLfMBic1Szk
+  	
+  MySQL Stored Procedures 101 https://medium.com/@peter.lafferty/mysql-stored-procedures-101-6b4fe230967
+  	 	CREATE PROCEDURE name(inout params)
+		BEGIN
+		DECLARE variables
+		DECLARE CURSORS
+		DECLARE handlers
+		STATMENTS
+		END
+
+   Cursors in stored procedures: helps up looping through DB queries one-by-one
+   		Cursors In Mysql part-1    https://www.youtube.com/watch?v=9z6ouWK5_l0&feature=youtu.be
+   		Cursors In Mysql part-2    https://www.youtube.com/watch?v=VtUvkndrk_c&feature=youtu.be
+   		
+   		MySQL Cursor : 
+   		http://www.mysqltutorial.org/mysql-cursor/
+   		To handle a result set inside a stored procedure, you use a cursor. A cursor allows you to iterate a set of rows returned by a query and process each row individually.
+   		1- declare a cursor by using the DECLARE statement
+   			DECLARE cursor_name CURSOR FOR SELECT_statement;
+   		2-you must call the OPEN statement before fetching rows from the result set.
+   			OPEN cursor_name;
+   		3-Then, use the FETCH statement to retrieve the next row pointed by the cursor and
+   				 move the cursor to the next row in the result set.
+   			 FETCH cursor_name INTO variables list;
+   		4-deactivate the cursor and release the memory associated with it
+   			CLOSE cursor_name;
+   		
+   		When working with MySQL cursor, you must also declare a NOT FOUND handler to handle the situation when the cursor could not find any row.
+		Because each time you call the FETCH statement, the cursor attempts to read the next row in the result set.	
+			DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = 1;
+	
+	
+	
+MySQL SELECT INTO Variable	http://www.mysqltutorial.org/mysql-select-into-variable/
+To store query result in one or more variables, you use the SELECT INTO variable syntax:
+SELECT 
+    c1, c2, c3, ...
+INTO 
+    @v1, @v2, @v3,...
+FROM 
+    table_name
+WHERE 
+    condition;
+	
+	
+			
+MySQL INSERT INTO SELECT    http://www.mysqltutorial.org/mysql-insert-into-select/
+INSERT INTO table_name(column_list)
+SELECT 
+   select_list 
+FROM 
+   another_table
+WHERE
+   condition;
+   
+   
+   
+MySQL Subquery			http://www.mysqltutorial.org/mysql-subquery/
+ A MySQL subquery is a query nested within another query such as SELECT, INSERT, UPDATE or DELETE.
+  In addition, a subquery can be nested inside another subquery.
+  1) MySQL subquery in WHERE clause
+  	a)MySQL subquery with comparison operators
+  	SELECT 
+    	customerNumber, 
+    	checkNumber, 
+    	amount
+	FROM
+  	  payments
+	WHERE
+   	 amount = (SELECT MAX(amount) FROM payments);
+ 
+    b) MySQL subquery with IN and NOT IN operators
+	SELECT 
+    	customerName
+	FROM
+  	  customers
+	WHERE
+  	  customerNumber NOT IN (SELECT DISTINCT customerNumber FROM orders);
+  	  
+   2) MySQL subquery in the FROM clause	  
+   When you use a subquery in the FROM clause, the result set returned from a subquery is used as a temporary table.
+   This table is referred to as a derived table or materialized subquery.
+   
+   SELECT 
+   	 MAX(items), 
+   	 MIN(items), 
+    	FLOOR(AVG(items))
+	FROM
+	   	 (SELECT orderNumber, COUNT(orderNumber) AS items FROM  orderdetails GROUP BY orderNumber) 
+	AS lineitems;
+	
+	3) MySQL subquery with EXISTS and NOT EXISTS
+	When a subquery is used with the EXISTS or NOT EXISTS operator, a subquery returns a Boolean value of TRUE or FALSE. 
+	 The following query illustrates a subquery used with the EXISTS operator:
+	 
+	SELECT   *
+	FROM
+ 	   table_name
+	WHERE
+   	 EXISTS( subquery );
+   	 
+   	 
+ Query performance optimazation and De-normalization
+ https://dzone.com/articles/how-to-optimize-mysql-queries-for-speed-and-perfor
+ https://rubygarage.org/blog/database-denormalization-with-examples
+ Optimize MySQL Queries:
+ 1) Index All Columns Used in 'where', 'order by', and 'group by' Clauses 
+ 2) de-normalize
+    Denormalization is the process of attempting to optimize the performance of a database by adding redundant data.
+    \ A normalized design will often store different but related pieces of information in separate logical tables (called relations). 
+    If these relations are stored physically as separate disk files, completing a database query that draws information from several relations (a join operation)
+    can be slow. If many relations are joined, it may be prohibitively slow. 
+    The described solution would work great in any "many reads / few writes" environment. Oracle is slightly better than MySQL 
+
+   		

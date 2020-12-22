@@ -1,0 +1,52 @@
+Abdul Bari  videos - chapter 6 backtracking
+1) N Queens Problem   https://www.youtube.com/watch?v=xFv_Hl4B83A
+2) Sum Of Subsets Problem  https://www.youtube.com/watch?v=kyLxTdsT8ws
+3) Graph Coloring Problem (m-coloring)   https://www.youtube.com/watch?v=052VkKhIaQ4
+4) Hamiltonian Cycle https://www.youtube.com/watch?v=dQr4wZCiJJ4
+
+introduction to back tracking(DFS)  and branch and bounce (BFS) Versus brute force
+6 Introduction to Backtracking - Brute Force Approach    https://www.youtube.com/watch?v=DKCbsiDBN6c
+	6.1 N Queens Problem using Backtracking
+	6.2 Sum Of Subsets Problem - Backtracking
+	6.3 Graph Coloring Problem - Backtracking
+	6.4 Hamiltonian Cycle - Backtracking
+	
+
+
+
+CS3 lecture 36: The Phileas Fogg Problem - Richard Buckland (draft) UNSW COMP2911  
+		Brute force Vs Greedy Vs Backtracking : https://www.youtube.com/watch?v=IkXQpvDUg5w
+
+https://www.geeksforgeeks.org/backtracking-algorithms/
+
+Backtracking explained
+https://medium.com/@andreaiacono/backtracking-explained-7450d6ef9e1a
+Backtracking is a general algorithm for finding all (or some) solutions to some computational problems, 
+	that incrementally builds candidates to the solutions, and abandons each partial candidate (“backtracks”) as soon as
+    it determines that the candidate cannot possibly be completed to a valid solution.
+
+State space search : 
+(in backtracking we search the state-space tree for feasible solutions, if not backtrack to previous state)
+https://en.wikipedia.org/wiki/State_space_search
+
+BackTracking                                   versus                Dynamic Programming
+Brute-force approach but with a better 								 recursive approach to break a big-problem 		
+  performance 															to smaller "overlapping" sub-problems 
+  (fail fast/kill fast wrong solutions)
+  
+Multiple "feasible" solutions out of all 							 1 optimum (usually a min/max problem) solutions out of			
+ solutions (state-space tree)											all "feasible" solutions based on the "constraints"
+ 
+State-space tree (DFS): go DFS level-by-level down the               Recursive tree (overlapping sub-problems) : find over-lapping 
+ state (which gradually builds the whole solution), and apply        subproblems, calculate each overlapping sub-problems ONCE, 
+ "bounding function". If that "partial solution" is NOT              save the sub-problem result in memory 
+  satisfying the bounding function, do NOT continue                     (MemCache / table -> memoization / tabulation) to save 
+   	(as opposed to brute-force which continues                       time. (improving time-complexity)
+   		ALL solutions up to the end), kill it, and BACKTRACK 
+  to previous state (go up the tree and remove last step 
+   	from the states), and try next partial solutions.
+(improving time-complexity)
+
+USUALLY backtracking problems have time-complexity of 2^n , n^n (NP-Hard problems)
+
+

@@ -1,0 +1,44 @@
+delimiter ##
+create procedure list_pop_events(IN correlationId VARCHAR(255))
+BEGIN
+    DECLARE dossierId int;
+    DECLARE containerId int;
+    DECLARE finished int default 0;
+    DECLARE category VARCHAR(255);
+    DECLARE orderTime datetime default now();
+    DECLARE completeTime datetime default now();
+    DECLARE _time datetime default now();
+
+    DECLARE c1 CURSOR FOR
+        select update_date_time, event_category from pop_history_event where product_order_pkg_id = (select id from product_order_pkg where container_id = containerId);
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished =1;
+
+    select distinct dossier_id INTO dossierId from dossier_metadata where correlation_id = correlationId;
+    SET containerId = dossierId +1;
+    open c1;
+    loop01 : LOOP
+        FETCH c1 into _time, category;
+        if(finished =1) THEN
+            LEAVE loop01;
+        end if;
+        if( category = 'PACKAGE_ORDERED') then
+            SET orderTime = _time;
+        end if;
+        if( category = 'PACKAGE_COMPLETED') then
+            SET completeTime = _time;
+        end if;
+
+    end loop loop01;
+    close c1;
+    if(orderTime != completeTime) then
+        select concat(orderTime , concat( ' --> ', completeTime));
+    else
+        select ' order not completed yet';
+    end if;
+
+END ##
+delimiter ;
+
+
+call list_pop_events('296018dafd374b919d2ae0133fb1acb3fa1567b0666613d5219b1');
+drop procedure list_pop_events;

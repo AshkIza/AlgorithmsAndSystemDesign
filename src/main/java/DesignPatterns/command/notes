@@ -1,0 +1,25 @@
+https://medium.com/better-programming/the-command-design-pattern-2313909122b5
+Encapsulate a request as an object, 
+thereby letting you parameterize clients with different requests,
+ queue or log requests, and support undoable operations
+ 
+The command pattern should be used when:
+You need a command to have a life span independent of the original request,
+ or if you want to queue, specify and execute requests at different times.
+ 
+ The command pattern has several advantages:
+ -It decouples the classes that invoke the operation 
+ 	from the object that knows how to execute the operation.
+ 	(command knows how to execute also has access to the receiver object, 
+ 		so can be looked as separate unit of work being executed anytime, also can
+ 		queue different commands to be proceesed later - batch processing)
+ -It allows you to create a sequence of commands by providing a queue system.
+ 
+ 
+ https://sourcemaking.com/design_patterns/command
+ 
+ https://www.baeldung.com/java-command-pattern
+ An invoker is an object that knows how to execute a given command 
+ but doesn't know how the command has been implemented. It only knows the command's interface
+ In some cases, the invoker also stores and queues commands, aside from executing them. This is useful for implementing some additional features,
+  such as macro recording or undo and redo functionality.

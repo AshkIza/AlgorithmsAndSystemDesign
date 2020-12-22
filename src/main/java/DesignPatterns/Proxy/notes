@@ -1,0 +1,27 @@
+Proxy (Interceptor)
+Interface-based. 
+We have Interface and implementation and the Proxy resides in between
+We call Proxy, and proxy calls the real Object. 
+Proxy intercepts the real object invocation.
+Proxy patterns solves:
+  - security (adding security level), or adding logging/validation/.. layers (before/after invocation)
+  - remove access (remote proxy is called to invoke a remove service)
+   - Cost (expensive object), when instantiating the real object is costly  by doing lazy-loading or cache
+We can have only ONE proxy for that real object. Also we are introducing extra abstraction layer
+proxy classes can implement many things in a convenient way:
+* logging when a method starts and stops
+* perform extra checks on arguments
+* mocking the behavior of the original class
+* implement lazy access to costly resources
+
+(dynamic) proxies are known to be used for at least the following purposes:
+* Database Connection and Transaction Management
+* Dynamic Mock Objects for Unit Testing
+* Adaptation of DI Container to Custom Factory Interfaces
+* AOP-like Method Interception
+examples:
++Used in Dependency injection (spring, ebb), AOP, hibernate (remove entity)
++Java RMI api (Java.rmi.*)
++Java dynamic proxies Api :
+	Java.lang.reflect.Proxy
+	Java.lang.reflect.InvocationHandler
