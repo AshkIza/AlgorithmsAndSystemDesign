@@ -1,7 +1,5 @@
 package Trees;
 
-import leetcode.Trees.SymmetricTreeRecursive_Iterative.TreeNode;
-
 /*
  * 
  *  https://www.techiedelight.com/deletion-from-bst/

@@ -1,7 +1,5 @@
 package Trees;
 
-import leetcode.Trees.SymmetricTreeRecursive_Iterative.TreeNode;
-
 /*   https://www.techiedelight.com/find-ancestors-of-given-node-binary-tree/
  * 
  * time complexity : O(n)

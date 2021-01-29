@@ -3,8 +3,6 @@ package Trees;
 import java.util.LinkedList;
 import java.util.List;
 
-import leetcode.Trees.SymmetricTreeRecursive_Iterative.TreeNode;
-
 /*  https://www.techiedelight.com/level-order-traversal-binary-tree/
  * 
  * */

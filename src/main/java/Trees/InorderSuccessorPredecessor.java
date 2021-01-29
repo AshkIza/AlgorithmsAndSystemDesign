@@ -2,7 +2,6 @@ package Trees;
 import java.util.ArrayList;
 import java.util.List;
 
-import leetcode.Trees.SymmetricTreeRecursive_Iterative.TreeNode;
 /*  https://algorithms.tutorialhorizon.com/inorder-predecessor-and-successor-in-binary-search-tree/
  * 
  * */

@@ -1,16 +1,19 @@
 package Trees;
 
-import leetcode.Trees.SymmetricTreeRecursive_Iterative.TreeNode;
+import java.util.LinkedList;
 
 /* https://www.geeksforgeeks.org/avl-tree-set-1-insertion/
  * 
  * */
 public class AVLTree {
 	AVLNode root;
-	public static class AVLNode extends TreeNode{
+	public static class AVLNode{
+		 public int val;
+	     public AVLNode left;
+	     public AVLNode right;
 	      public int height;
 		public AVLNode(int val) {
-			super(val);
+			this.val = val;
 			height = 0;
 		}
 	}
@@ -106,6 +109,8 @@ public class AVLTree {
 		return y;
 	}
 	
+	
+	
 	private int updateHeight(AVLNode node){
 		if (node == null || (node.left == null && node.right == null)){
 			node.height = 0;//ATTETION TO DETAIL -> Troubleshoot all cases(leaf nodes as well as nodes with 1/2 children)
@@ -137,9 +142,29 @@ public class AVLTree {
 		}
 		return l - r;
 	}
+	
+	public static void levelOrderTraversal(AVLNode root){
+		String bfs = "\nlevel Order Traversal (BFS): ";
+		if(root == null){
+			return;
+		}
+		LinkedList<AVLNode> q = new LinkedList<>();
+
+		q.add(root);
+		while(!q.isEmpty()){
+			AVLNode node = q.poll();
+			if(node.left!=null){
+				q.add(node.left);
+			}
+			if(node.right!=null){
+				q.add(node.right);
+			}
+			bfs += node.val + ", ";
+		}
+		System.out.println(bfs);
+	}
 
 	public static void main(String[] args) {
-		LevelOrderTraversal levelOrderTraversal = new LevelOrderTraversal();
         AVLTree avlTree = new AVLTree(); 
         
         System.out.println("Root of AVL tree changes as insertion goes on "); 
@@ -150,7 +175,7 @@ public class AVLTree {
         avlTree.insert(30); 
         avlTree.insert(40); 
         avlTree.insert(50); 
-		levelOrderTraversal.levelOrderTraversal(avlTree.root);
+		levelOrderTraversal(avlTree.root);
         
         avlTree.insert(25); 
         /* The constructed AVL Tree would be 
@@ -161,14 +186,14 @@ public class AVLTree {
         10  25    50 
         */
 
-		levelOrderTraversal.levelOrderTraversal(avlTree.root);
+		levelOrderTraversal(avlTree.root);
 		
 		avlTree.insert(28); 
 	    avlTree.insert(26); 
 	    avlTree.insert(29); 
-		levelOrderTraversal.levelOrderTraversal(avlTree.root);
+		levelOrderTraversal(avlTree.root);
 		
 	    avlTree.insert(24); 
-		levelOrderTraversal.levelOrderTraversal(avlTree.root);
+		levelOrderTraversal(avlTree.root);
 	}
 }
