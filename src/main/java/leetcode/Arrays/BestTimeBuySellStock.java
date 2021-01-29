@@ -34,25 +34,24 @@ public class BestTimeBuySellStock {
 	 *   (no more analysis done to make the algorithm more concise)
 	 * */
 	  public static  int maxProfit(int[] prices) {
-	        if (prices.length == 1) {
-	            return 0;
-	        }
+		  if(prices.length < 2) return 0;//need at least 2 price 
+	        int buyprice= -1;
 	        int profit = 0;
-	        int lastPriceIndex = -1;
-	        boolean toBuy = true;
-	        for(int i = 1; i < prices.length; i++){
-	            if(toBuy && prices[i] > prices[i-1]){
-	                lastPriceIndex = i-1;
-	                toBuy = false;
-	            }
-	            if(!toBuy && prices[i] < prices[i-1]){
-	                profit += prices[i-1] - prices[lastPriceIndex];
-	                toBuy = true;
+	        for(int index = 0; index< prices.length -1;  index++){
+	            if(buyprice == -1){//buy
+	                if(prices[index+1] > prices[index]){//price going up -> buy signal
+	                    buyprice = prices[index];
+	                }
+	            }else{//sell
+	                if(prices[index+1] < prices[index]){//price going down -> sell signal
+	                    profit += prices[index] - buyprice;
+	                    buyprice = -1;//we can but again!
+	                }
 	            }
 	        }
 	        
-	        if(!toBuy && lastPriceIndex !=-1){
-	             profit += prices[prices.length-1] - prices[lastPriceIndex];
+	        if(buyprice!=-1){//reached to the end and have not sold yet
+	               profit += prices[prices.length -1] - buyprice;
 	        }
 	        
 	        return profit;

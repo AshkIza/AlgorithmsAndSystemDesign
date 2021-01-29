@@ -22,21 +22,25 @@ public class moveZeroes {
     *   Minimize the total number of operations -> do swap instead of total array shift in each loop iteration
     * */	
    public static void moveZeroes(int[] nums) {
-        int zeroCount = 0;
-        for(int i = 0; i< nums.length; i++){
-	           if(nums[i] == 0){
-	               zeroCount++;
-	           }else if(nums[i] != 0 && zeroCount > 0){
-	               swap(nums, i-zeroCount, i);
-	           }
-	       }
-	   }
+	   if(nums.length <= 1) return;
+       int zeroCount = 0;
+       for(int index = 0; index < nums.length; index++){
+           if(nums[index] == 0){
+               zeroCount++;
+           }else{
+               swap(nums, index, zeroCount);
+           }
+       }
+   }
 	    
-	   private static void swap(int[] nums, int i_1, int i_2){
-	       int temp = nums[i_1];
-	       nums[i_1] = nums[i_2];
-	       nums[i_2] = temp;
-	   }
+   public static void swap(int[] nums, int index, int zeroCount){
+       if(zeroCount > 0){
+           int start = index - zeroCount;
+           int temp = nums[start];
+           nums[start] = nums[index];
+           nums[index] = temp;
+       }
+   }
 	   
 	  
 

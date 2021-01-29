@@ -28,16 +28,17 @@ public class BestTimeBuySellStock {
 	   /*
 	    * */
 	   public static int maxProfit(int[] prices) {
-	        if(prices.length == 0 || prices.length == 1){
-	            return 0;
+		    if(prices.length < 2) return 0;
+	        int highestSellPrice = prices[prices.length -1];
+	        int maxProfit = -1;
+	        for(int index = prices.length -2; index >= 0; index--){
+	            //buy at index 
+	            int profitAtIndex = highestSellPrice - prices[index];
+	            maxProfit = Math.max(profitAtIndex, maxProfit);
+	            //sell at index
+	            highestSellPrice = Math.max(highestSellPrice, prices[index]);
 	        }
-	        int highestSellPrice = prices[prices.length - 1];
-	        int maxProfit = 0;
-	        for(int i = prices.length -2; i>=0; i--){
-	            highestSellPrice = Math.max(highestSellPrice, prices[i+1]);//tabulized value 
-	            maxProfit = Math.max(maxProfit, highestSellPrice - prices[i]);
-	        }
-	        return maxProfit;
+	        return maxProfit <= 0 ? 0 : maxProfit;
 	    }
 
 	public static void main(String[] args) {
@@ -45,12 +46,18 @@ public class BestTimeBuySellStock {
 		System.out.println("maxProfit(new int[] {7, 6, 4, 3, 1} ) : "  + maxProfit(new int[] {7, 6, 4, 3, 1} ) );
 		System.out.println("maxProfit(new int[] {7} ) : "  + maxProfit(new int[] {7} ) );
 		
-		System.out.println(" \nmaximization problem --> screams for Dynamic Problamming " );
-		System.out.println(" 	Dynamic Problamming --> trying to break in problem to 'overlapping' sub-problems " );
-		System.out.println(" 	     'overlapping' sub-problems --> saving the subproblem results in mem-Cache(random and recursive) or tabulized (iteratively)" );
-		System.out.println(" 	        since sub-problems are 'overlapping' -->  results from previous steps help us to build results for next steps" );
+		System.out.println("NOTE on maximization problems:");
+		System.out.println("	maximization problem --> screams for Dynamic programming ");
+		System.out.println("	Dynamic programming --> trying to break in them problem into 'overlapping' sub-problem");
+		System.out.println("	'overlapping' sub-problems --> saving the subproblem results (recursively or iteratively).");
+		System.out.println("	recursively -> memoizedCache (top to bottom approach)");
+		System.out.println("	iteratively -> tabulation (bottom up approach)");
 
+		System.out.println("NOTE on maximization problems on Arrays (Dynamic Programming with Arrays):");
+		System.out.println("	Iterate through array (recursive solution is not best performing) -> tabular approach");
+		System.out.println("	tabular approach (bottom-up)—> approach array from end to being (bottom-up) to build your tabular results");
 
+		
 	}
 
 }

@@ -1,6 +1,6 @@
 package leetcode.Trees;
 
-import leetcode.Trees.SymmetricTreeRecursive_Iterative.TreeNode;
+import leetcode.Trees.TreeNode;
 
 /*  Given a binary tree, flatten it to a linked list in-place.
 

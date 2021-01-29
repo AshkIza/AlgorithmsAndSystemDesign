@@ -10,6 +10,8 @@ import leetcode.LinkedList.DeleteNodeNoAccessToHead.ListNode;
 	Input: 1->2->4, 1->3->4
 	Output: 1->1->2->3->4->4
 	
+	https://leetcode.com/explore/interview/card/top-interview-questions-easy/93/linked-list/771/
+	
 	Solution: 
 		https://www.programcreek.com/2012/12/leetcode-merge-two-sorted-lists-java/ 
 		     fake head 
@@ -36,9 +38,8 @@ public class MergeTwoSortedList {
 		 System.out.println(nodes);
 	 }
 	 
-	// use fakeHead where real head is fakeHeas.next, This reduces the logic (no need to check if  head == null)
     public static  ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        if(l1 == null && l2 == null){
+        /*if(l1 == null && l2 == null){
             return null;
         }
         ListNode node = null;
@@ -68,10 +69,42 @@ public class MergeTwoSortedList {
                 node.next = n;
             }
         }
+        return head;*/
+    	
+        if(l1 == null && l2==null) return null;
+        if(l1 == null) return l2;
+        if(l2 == null) return l1;
+        ListNode head; 
+        ListNode other; 
+        if(l1.val <= l2.val){
+            head = l1;
+            other = l2;
+        }else{
+            head = l2;
+            other = l1;
+        }
+        ListNode n = head;
+        while(n.next!=null || other!=null){
+            if(n.next==null){
+                n.next = other;
+                return head;
+            }
+            if(other == null){
+                return head;
+            }
+            if(n.next.val <= other.val){
+                n = n.next;
+            }else{
+                ListNode temp = n.next;
+                n.next = other;
+                other = temp;
+                n = n.next;
+            }
+        }
         return head;
     }
     
-    
+	// use fakeHead where real head is fakeHeas.next, This reduces the logic (no need to check if  head == null)
     public static  ListNode mergeTwoListsFakeHead(ListNode l1, ListNode l2) {
         if(l1 == null && l2 == null){
             return null;
@@ -131,7 +164,7 @@ public class MergeTwoSortedList {
 		printNodes(n1);
 		printNodes(n2);
 		
-		System.out.println("\nmergeTwoListsFakeHead(n1, n2)");
+		System.out.println("\nmergeTwoLists(n1, n2)");
 		printNodes(mergeTwoLists(n1,n2));
 		
 	}

@@ -16,16 +16,41 @@ Output: false
 Note:
 You may assume the string contains only lowercase alphabets.
 
-Follow up:
+Follow up
+
 What if the inputs contain unicode characters? How would you adapt your solution to such case?
 
-solutions: https://www.programcreek.com/2014/05/leetcode-valid-anagram-java/
+Answer
+
+Use a hash table instead of a fixed size counter.
+ Imagine allocating a large size array to fit the entire range of unicode characters, 
+ which could go up to more than 1 million. A hash table is a more generic solution 
+ and could adapt to any range of characters.
  * 
  * */
 public class ValidAnagram {
+	
+	public static boolean isAnagram(String s, String t) {
+        if(s.length() != t.length()) return false;
+        if(s.length()==0) return true;
+        int[] footprint = new int[26];//26 characters in english alphabet
+        for(char ch : s.toCharArray()){
+            int i = (int)(ch - 'a');
+            footprint[i]++;
+        }
+        for(char ch : t.toCharArray()){
+            int i = (int)(ch - 'a');
+            if(footprint[i] == 0){
+                return false;
+            }else{
+               footprint[i]--; 
+            }
+        }
+        return true;
+    }
 
 	
-	  public static boolean isAnagram(String s, String t) {
+	  public static boolean isAnagramUnicode(String s, String t) {
 	        if(s.length() != t.length()){
 	            return false;
 	        }
@@ -64,6 +89,7 @@ public class ValidAnagram {
 		
 		System.out.println(" isAnagram('anagram', 'nagaram') : " + isAnagram("anagram", "nagaram"));
 		System.out.println(" isAnagram('rat', 'car') : " + isAnagram("rat", "car"));
+		
 
 	}
 	

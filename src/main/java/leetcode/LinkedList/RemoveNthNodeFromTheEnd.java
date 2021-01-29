@@ -41,7 +41,7 @@ public class RemoveNthNodeFromTheEnd {
 	
 	
 	 public static ListNode removeNthFromEnd(ListNode head, int n) {
-	       ListNode node = head;
+	       /*ListNode node = head;
 	       ListNode flag = head;
 	       int count = 1;
 	       while(count <= n && node.next != null){
@@ -61,7 +61,26 @@ public class RemoveNthNodeFromTheEnd {
 	       }
 	       //till here, we found the previous node(n+1 th node from end)
 	       flag.next = flag.next.next;//skipping the n-th node (removing it)
-	       return head;
+	       return head;*/
+		 
+		 
+		    if(head == null || n == 0) return head;
+	        ListNode previous = null;
+	        ListNode tail = head;
+	        //previous->nth-> ...->tail
+	        for(int i = 1; i < n; i++){
+	            tail = tail.next;
+	        }
+	        while(tail.next!=null){
+	            previous =  (previous == null) ? head : previous.next;
+	            tail = tail.next;
+	        }
+	        if(previous == null){//nth was the head
+	            head = head.next;
+	            return head;
+	        }
+	        previous.next = previous.next.next;
+	        return head;
 	}
 
 	public static void main(String[] args) {

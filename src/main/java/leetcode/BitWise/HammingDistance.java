@@ -24,7 +24,19 @@ The above arrows point to positions where the corresponding bits are different.
  * */
 public class HammingDistance {
 	
-	public static int hammingDistance(int x, int y) {
+	  public static int hammingDistance(int x, int y) {
+	        int hammingwieght = 0;
+	        while(x!=0 || y !=0){
+	            int a = x & 1;//1 is mask bit
+	            int b = y & 1;
+	            if( (a^b) == 1) hammingwieght++;// 0^0 =0 ; 1^1=0
+	            x >>= 1;//right-shift
+	            y >>= 1;
+	        }
+	        return hammingwieght;
+	    }
+	
+	public static int hammingDistanceUsingHammingWeight(int x, int y) {
 	        return hammingWeight(x ^ y);
     }
 	    

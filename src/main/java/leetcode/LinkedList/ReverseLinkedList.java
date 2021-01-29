@@ -36,28 +36,43 @@ public class ReverseLinkedList {
 		 }
 		 System.out.println(nodes);
 	 }
-	
-	
+
     public static  ListNode reverseList(ListNode head) {
-        if(head == null || head.next == null){
-            return head;
+    	   if(head == null || head.next == null) return head;
+           ListNode pre = head;
+           ListNode node = head.next;  
+           pre.next = null;//avoid infinite circular loop
+           while(node.next != null){
+               //saving the next node before we loose tracking of it
+               ListNode nextnode = node.next;
+               node.next = pre;
+               pre=node;
+               node = nextnode;
+           }
+         /* node is pointing to tail now (node.next = null), 
+          * we need to link it to prev 
+          * (otherwise head will get linked to null - LinkedList of size 1)
+         */
+         node.next = pre;
+         return node;// new head 
+    }
+    
+    public static ListNode reverseListRecursive(ListNode head) {
+        if(head == null || head.next == null) return head;
+        ListNode pre = head;
+        ListNode node = head.next;
+        pre.next = null;//avoid infinite circular loop
+        return reverseListR(pre, node);
+    }
+    
+    static ListNode reverseListR(ListNode pre, ListNode node){
+        if(node.next == null){
+            node.next = pre;
+            return node;
         }
-        ListNode prev = null;
-        ListNode next = head.next;
-        ListNode node = head;
-        while( node.next != null){
-            next = node.next;// we save next step before cutting the node linkage in the next line
-            node.next = prev;
-            prev = node;
-            node = next;
-        }
-        /* node is pointing to tail now (node.next = null), 
-         * we need to link it to prev 
-         * (otherwise head will get linked to null - LinkedList of size 1)
-        */
-        // (node.next = null)
-        node.next = prev;//if we skip this, it returns linkedlist of size 1 (only this node)
-        return node;//once linkage is made, node is now the new head 
+        ListNode nextnode = node.next;
+        node.next = pre;
+        return reverseListR(node, nextnode);
     }
     
     
@@ -90,8 +105,10 @@ public class ReverseLinkedList {
 	
 		System.out.println("2) Reverse a linked list Recursively");
 		printNodes(reveresedListHead);
-		System.out.println("reverseRecursive(null, head)");
-		printNodes(reverseRecursive(null,reveresedListHead));
+		//System.out.println("reverseRecursive(null, head)");
+		//printNodes(reverseRecursive(null,reveresedListHead));
+		System.out.println("reverseRecursive(head)");
+		printNodes(reverseListRecursive(reveresedListHead));
 
 	}
 

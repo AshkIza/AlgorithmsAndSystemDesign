@@ -21,17 +21,15 @@ Solution
 public class MaximumSubarray {
 	
     public static int maxSubArrayDP(int[] nums) {
-        if( nums.length == 0 ){
-            return 0;
+        if(nums.length == 1) return nums[0];
+        int N = nums.length - 1;
+        int maxSum = nums[N];//maximum susbarray at each index(tabulized value)
+        int maxSubArraySum = maxSum;//maximum value from tabulation table (subproblems)
+        for(int i = N-1; i>=0; i--){
+            maxSum = Math.max(nums[i], nums[i] + maxSum);// include i+1 elements or not
+            maxSubArraySum = Math.max(maxSubArraySum, maxSum);
         }
-        int SubArraySum = nums[nums.length -1];
-        int max = SubArraySum;
-        for(int i = nums.length -2; i >= 0; i--){
-            SubArraySum = Math.max(nums[i], nums[i]+SubArraySum);//tabulized value
-            max = Math.max(max, SubArraySum);
-            //maximum value from tabulation table (table of subproblems)
-        }
-        return max;
+        return maxSubArraySum;
     }
     
     //TODO
@@ -40,12 +38,19 @@ public class MaximumSubarray {
 
 	public static void main(String[] args) {
 		System.out.println("maxSubArrayDP(new int[] {-2, 1, -3, 4, -1, 2, 1, -5, 4} ) : "  + maxSubArrayDP(new int[] {-2, 1, -3, 4, -1, 2, 1, -5, 4} ) );
-		System.out.println(" \nmaximization problem --> screams for Dynamic Problamming " );
-		System.out.println(" 	Dynamic Problamming --> trying to break in problem to 'overlapping' sub-problems " );
-		System.out.println(" 	     'overlapping' sub-problems --> saving the subproblem results in mem-Cache(random and recursive) or tabulized (iteratively)" );
-		System.out.println(" 	        since sub-problems are 'overlapping' -->  results from previous steps help us to build results for next steps" );
+		
+		System.out.println("NOTE on maximization problems:");
+		System.out.println("	maximization problem --> screams for Dynamic programming ");
+		System.out.println("	Dynamic programming --> trying to break in them problem into 'overlapping' sub-problem");
+		System.out.println("	'overlapping' sub-problems --> saving the subproblem results (recursively or iteratively).");
+		System.out.println("	recursively -> memoizedCache (top to bottom approach)");
+		System.out.println("	iteratively -> tabulation (bottom up approach)");
 
+		System.out.println("NOTE on maximization problems on Arrays (Dynamic Programming with Arrays):");
+		System.out.println("	Iterate through array (recursive solution is not best performing) -> tabular approach");
+		System.out.println("	tabular approach (bottom-up)—> approach array from end to being (bottom-up) to build your tabular results");
 
+		
 
 	}
 

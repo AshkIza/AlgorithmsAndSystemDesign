@@ -32,47 +32,46 @@ Longest Common Prefix using Character by Character Matching
  * */
 public class LongestCommonPrefix {
 	
-	   public static String longestCommonPrefix(String[] strs) {
-	        if(strs.length == 0){
-	            return "";
-	        }
-	        if(strs.length == 1){
-	            return strs[0];
-	        }
-	        String benchmark = strs[0];
-	        for(int i = 1; i < strs.length; i++){
-	            if(strs[i].length() < benchmark.length()){
-	                benchmark = strs[i];
-	            }
-	        }
-	        String result = "";
-	        int count = 0;
-	        while( count < benchmark.length()){
-	            if(commonChar(strs, count, benchmark.charAt(count))){
-	                result = result + benchmark.charAt(count);
-	                count++;
-	            }else{
-	                return result;
-	            }
-	        }
-	        return result;
-	    }
-	    
-	    private static boolean commonChar(String[] strs, int index, char ch){
-	        for(int i = 0; i < strs.length; i++){
-	            if(strs[i].charAt(index) != ch){
-	                return false;
-	            }
-	        }
-	        return true;
-	    }
 	
-	
+    public static String longestCommonPrefix(String[] strs) {
+        if(strs.length == 0) return "";
+        if(strs.length == 1) return strs[0];
+        int maxPrefixLength = 0;
+        for(String st : strs){
+            if(st.length() == 0) return "";
+            if(maxPrefixLength == 0){
+                maxPrefixLength = st.length();
+            }else{
+                maxPrefixLength = Math.min(maxPrefixLength, st.length());
+            }
+        }
+        int index = 0;
+        String result = "";
+        while(index < maxPrefixLength){
+            char ch = findCommon(strs, index);
+            if(ch == ' ') return result;
+            result += String.valueOf(ch);
+            index++;
+        }
+        
+        return result;
+    }
+    
+    static char findCommon(String[] strs, int index){
+        char c = strs[0].charAt(index);
+        for(int i = 1; i < strs.length; i++){
+            if(strs[i].charAt(index) != c) return ' ';
+        }
+        return c;
+    }
 
 	public static void main(String[] args) {		
 		System.out.println(" longestCommonPrefix(['flower','flow','flight']) : " + longestCommonPrefix( new String[] {"flower","flow","flight"}));
 		System.out.println(" longestCommonPrefix(['dog','racecar','car']) : " + longestCommonPrefix( new String[] {"dog","racecar","car"}));
+		System.out.println(" longestCommonPrefix(['apple','applby','application']) : " + longestCommonPrefix( new String[] {"apple","applby","application"}));
 
+		
+		
 		System.out.println("\n array.length vs string.length()  ");
 		System.out.println("https://www.geeksforgeeks.org/length-vs-length-java/  ");
 		String[] arrayOfStrings = new String[] {"a","ab","abcd", "efghijk", "lmnop"};

@@ -66,12 +66,14 @@ public class PowerOfThree {
 	  * time : O(1)
 	  * space : O(1)
 	  * */
-	 public boolean isPowerOfThreeOptimal(int n) {
+	 public static boolean isPowerOfThreeOptimal(int n) {
 	        return n > 0 && 1162261467 % n == 0;
 	    }
+	 
 
 	public static void main(String[] args) {
 		PowerOfThree powerOfThree = new PowerOfThree();
+
 		
 	       System.out.println(); 
 	        System.out.println("NOTE: IN INTEGER algorithms ALWAYS consider following edge cases"); 
@@ -94,6 +96,7 @@ public class PowerOfThree {
 		   System.out.println("\nANOTHER OBSERVATION FOR 3^n integers: (SPECIAL CHARACTERISTICS of the NUMBERS in the problem)"); 
 		   System.out.println("Since 3 is a prime number, the only divisors of 3^19  are 3^0, 3^1,3^2,..3^19. therefore all we need to do "
 		   		+ "    is \n divide 3^19 by n. A remainder of 0 means n is a divisor of 3^19 and therefore a power of three."); 
+		   System.out.println("log3(Integer.MAX_VALUE) : " + Math.log(Integer.MAX_VALUE)/Math.log(3));
 
 	}
 

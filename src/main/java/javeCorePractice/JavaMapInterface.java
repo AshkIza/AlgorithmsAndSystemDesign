@@ -54,7 +54,7 @@ public class JavaMapInterface {
 		System.out.println();
 		
 		
-		System.out.println("TreeMap  does NOT maintain insertion order, BUT it keeps the keys in descending order");
+		System.out.println("TreeMap  does NOT maintain insertion order, BUT it keeps the natural ordering");
 		Map<String, Integer> treeMap = new TreeMap<>();
 		treeMap.put("Interlocking", 3240);
 		treeMap.put("Driveway", 1750);
@@ -226,18 +226,6 @@ public class JavaMapInterface {
 	    mapConditionalPutGet.computeIfPresent("a", (key,value) -> 999);
 	    System.out.println("mapConditionalPutGet.getOrDefault(\"z\", 56) : " + mapConditionalPutGet.getOrDefault("z", 56));
 	    System.out.println("mapConditionalPutGet.computeIfPresent(\"a\", (key,value) -> 999) :" + mapConditionalPutGet.computeIfPresent("a", (key,value) -> 999));
-	    
-		
-	
-				
-	    
-	    
-	    
-		
-		
-		
-		
-
 
 	}
 

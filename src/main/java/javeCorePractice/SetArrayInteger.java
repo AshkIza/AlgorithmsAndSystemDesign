@@ -100,15 +100,6 @@ public class SetArrayInteger {
 		Arrays.sort(intarray);
 		System.out.println("int[] intarray : Arrays.sort(intarray)" );
 
-
-
-
-		
-		
-
-
-
-
 	}
 
 }

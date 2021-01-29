@@ -1,6 +1,7 @@
 package leetcode.BitWise;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /* Input: 5
@@ -20,7 +21,27 @@ i used receursive
  * */
 public class PascalTriangle {
 	
-	   public static List<List<Integer>> generate(int numRows) {
+	public static List<List<Integer>> generate(int numRows) {
+        // edge cases
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        if(numRows == 0 ) return result;
+        List<Integer> lastLevel = Arrays.asList(1);
+        result.add(lastLevel);
+        if(numRows == 1) return result;
+        for(int i = 2; i <=numRows ; i++){
+            List<Integer> nextLevel = new ArrayList<>();
+            nextLevel.add(1);
+            for(int k = 0; k < lastLevel.size()-1; k++){
+                nextLevel.add(lastLevel.get(k) + lastLevel.get(k+1));
+            }
+            nextLevel.add(1);
+            result.add(nextLevel);
+            lastLevel = nextLevel;
+        }
+        return result;
+    }
+	
+	   public static List<List<Integer>> generateRecursively(int numRows) {
 	        List<List<Integer>> result = new ArrayList<List<Integer>>();
 	        if(numRows <= 0 ){
 	            return result;

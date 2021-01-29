@@ -3,7 +3,7 @@ package leetcode.Trees;
 import java.util.ArrayList;
 import java.util.List;
 
-import leetcode.Trees.SymmetricTreeRecursive_Iterative.TreeNode;
+import leetcode.Trees.TreeNode;
 
 /*   Lowest Common Ancestor of a Binary Tree
 	Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
@@ -149,6 +149,11 @@ public class LowestCommonAncestorOfBinaryTree {
 
 
 	public static void main(String[] args) {
+		
+		System.out.println("  Tree = Recursive (90% of problems) " );
+		System.out.println("  if using Iterative for tree -> use Queue aka LinkedList \n\n" );
+		
+		
 		TreeNode root = new TreeNode(3);
 	    root.left = new TreeNode(5);
 		root.right = new TreeNode(1);

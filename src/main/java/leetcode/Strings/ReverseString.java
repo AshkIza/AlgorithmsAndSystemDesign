@@ -23,15 +23,19 @@ public class ReverseString {
 
 	
 	public static void reverseString(char[] s) {
-        int i = 0;
-        int j = s.length - 1;
-        while (i <= j){
-            char temp = s[i];
-            s[i] = s[j];
-            s[j] = temp;
-            i++;
-            j--;
+        if(s.length <=1) return;
+        int a = 0;
+        int b = s.length -1;
+        while(a < b){
+            swap(s, a, b);
+            a++;
+            b--;
         }
+    }
+    private static void swap(char[] s, int a, int b){
+        char t = s[a];
+        s[a] = s[b];
+        s[b] = t;
     }
 	public static void main(String[] args) {
 		char[] input = new char[]{'h','e','l','l','o'};

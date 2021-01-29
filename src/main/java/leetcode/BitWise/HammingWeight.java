@@ -38,23 +38,21 @@ In Java, the compiler represents the signed integers using 2's complement notati
 
 public class HammingWeight {
 	
-    public static int hammingWeight(long n) {
-        //int max =  (int) (((long)Math.pow(2,32)) -1);
-        int hammingDistance = 0;
-        while( n != 0){
-            hammingDistance += n & 1;
-            n = n >>1;
+    public static int hammingWeight(int n) {     
+    	int significantBit = (n > 0) ? (int) (Math.log(n)/Math.log(2)) + 1 : 32;//find the significant bit
+        int a = 1;
+        int hammingWeight = 0;
+        for(int i = 1; i <= significantBit; i++){
+            if((a & n) != 0) hammingWeight++;
+             a = a << 1;//left-shift
         }
-        return hammingDistance ;
+        return hammingWeight;
     }
 
 	public static void main(String[] args) {
-		//long x = 4294967293;
-		//System.out.println("hammingWeight() " + hammingWeight(618897578));//100100111000111010000010101010
-		//System.out.println("hammingWeight() " + hammingWeight(1073741743));//111111111111111111111110101111
+		System.out.println("hammingWeight(100100111000111010000010101010) " + hammingWeight(618897578));
+		System.out.println("hammingWeight(111111111111111111111110101111) " + hammingWeight(1073741743));
 		System.out.println("hammingWeight(11111111111111111111111111111101) " + hammingWeight(-3));//11111111111111111111111111111101
-
-		
 
 	}
 

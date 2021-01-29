@@ -27,7 +27,7 @@ Assume we are dealing with an environment which could only store integers within
 public class ReverseInteger {
 	
     public static int reverse(int x) {
-        boolean negative = (x <0) ? true : false;
+        /*boolean negative = (x <0) ? true : false;
         x = Math.abs(x);
         int result = 0;
         while ( x > 0) {
@@ -40,7 +40,18 @@ public class ReverseInteger {
             }
             x /= 10;
       }
-      return (negative ?  (result * -1 ) : result);
+      return (negative ?  (result * -1 ) : result);*/
+    	 boolean positive = x >= 0 ;
+         long xlong = (long) Math.abs(x);
+         long reverse = 0;
+         while(xlong > 0){
+             long a = xlong % 10;
+             reverse = reverse * 10  + a;
+             xlong = xlong / 10;
+         }
+         reverse = positive ? reverse : reverse * -1;
+         if(reverse > Integer.MAX_VALUE || reverse < Integer.MIN_VALUE) return 0;
+         return (int) reverse;	
     }
     
     

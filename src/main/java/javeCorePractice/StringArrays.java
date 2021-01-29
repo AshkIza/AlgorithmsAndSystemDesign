@@ -143,7 +143,7 @@ public class StringArrays {
 	       * */
 	      System.out.println("\nString --> IntStream :  IntStream chars()");
 	      System.out.println("\"String.chars()\".chars().forEach(c -> System.out.println((char) c))");
-	      "String.chars()".chars().forEach(c -> System.out.println((char) c));
+	      "String.chars()".chars().forEach(c -> System.out.println( (char)c));
 
 
 	}

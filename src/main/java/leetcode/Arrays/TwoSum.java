@@ -50,7 +50,7 @@ public class TwoSum {
      *  O(N) but extra space/hashing O(N)
     */
     public static int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> pairs = new HashMap<>();
+        /*Map<Integer, Integer> pairs = new HashMap<>();
         for(int i = 0; i < nums.length; i++){
             pairs.put(target - nums[i], i);
         }
@@ -59,7 +59,15 @@ public class TwoSum {
                 return new int[]{i, pairs.get(nums[i])};
             }
         }
-        return new int[]{0, 0};
+        return new int[]{0, 0};*/
+    	 Map<Integer, Integer> valueindex = new HashMap<>();
+         for(int i = 0; i < nums.length; i++){
+             if(valueindex.containsKey(target - nums[i])){
+                 return new int[]{valueindex.get(target - nums[i]), i};
+             }
+             valueindex.put(nums[i], i);
+         }
+         return new int[]{};
     }
 
 
@@ -68,6 +76,15 @@ public class TwoSum {
 		System.out.println("twoSumNaive({2, 7, 11, 15}, 9) is : " + Arrays.toString(twoSumNaive(nums01, 9)) + " -  O(N^2)");
 		System.out.println("twoSum({2, 7, 11, 15}, 9) is : " + Arrays.toString(twoSumNaive(nums01, 9)) + " - O(N) & O(N) extra space ");
 
+		int[] nums02 = new int[] {3, 2, 4};
+		System.out.println("\ntwoSumNaive({3, 2, 4}, 6) is : " + Arrays.toString(twoSumNaive(nums02, 6)) );
+		System.out.println("twoSum({3, 2, 4}, 6) is : " + Arrays.toString(twoSumNaive(nums02, 6)));
+
+		int[] nums03 = new int[] {3, 3};
+		System.out.println("\ntwoSumNaive({3, 3}, 6) is : " + Arrays.toString(twoSumNaive(nums03, 6)) );
+		System.out.println("twoSum({3, 3}, 6) is : " + Arrays.toString(twoSumNaive(nums03, 6)));
+
+		
 	}
 
 }

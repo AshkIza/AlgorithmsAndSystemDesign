@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Deque;
 import java.util.List;
 
-import leetcode.Trees.SymmetricTreeRecursive_Iterative.TreeNode;
+import leetcode.Trees.TreeNode;
 
 /*  Given a binary tree, return the zigzag level order traversal of its nodes' values. (ie, from left to right, then right to left for the next level and alternate between).
 

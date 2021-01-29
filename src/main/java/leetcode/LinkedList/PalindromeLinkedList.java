@@ -44,31 +44,35 @@ public class PalindromeLinkedList {
 	 /* O(N) with O(1) extra space
 	  * */
 	   public static boolean isPalindrome(ListNode head) {
-	        if(head == null || head.next == null){
-	            return true;
-	        }
-	        ListNode s = head;
-	        ListNode f = head;
-	        ListNode prev = null;
-	        ListNode next = null;
-	        ListNode n1 = null;
-	        ListNode n2 = null;
-	        while(f.next != null && f.next.next != null){
-	            f= f.next.next;
-	            next = s.next;
-	            s.next = prev;
-	            prev = s;
-	            s = next;
-	        }
-	        if(f.next == null){//odd size linked-list
-	            n1 = prev;
-	            n2 = s.next;
-	        }else{//even size linked-list
-	            n2 = s.next;
-	            s.next = prev;
-	            n1 = s;
-	        }
-	        return areEqual(n1, n2);
+		     if(head == null || head.next ==null) return true;
+		        if(head.next.next==null) return head.val == head.next.val;
+		        ListNode slow = head;
+		        ListNode fast = head;
+		        ListNode nextslow = head.next;
+		        while(fast.next!=null && fast.next.next!=null){
+		            fast=fast.next.next;
+		            ListNode pre = slow;
+		            slow = nextslow;
+		            nextslow = nextslow.next;
+		            slow.next = pre;
+		        }
+		        ListNode left;
+		        ListNode right;
+		        if(fast.next == null){//odd size
+		            //slow is the middle element
+		            left = slow.next;
+		            right = nextslow;
+		        }else{//even size
+		            // slow and nextslow are middle elements
+		            left = slow;
+		            right = nextslow;
+		        }
+		        while(left!=null && right!=null){
+		            if(left.val != right.val) return false;
+		            left = left.next;
+		            right = right.next;
+		        }
+		        return true;
 	    }
 	    
 	   static  boolean  areEqual(ListNode n1, ListNode n2){
@@ -83,35 +87,33 @@ public class PalindromeLinkedList {
 	        return true;
 	    }
 	   
+	   
+	static ListNode createLinkedlist(int[] array) {
+		ListNode head = new ListNode(array[0]);
+		ListNode node = head;
+		for(int i = 1; i < array.length; i++) {
+			node.next = new ListNode(array[i]);
+			node = node.next;
+		}
+		return head;
+	}
+	   
 	public static void main(String[] args) {
-		ListNode oddSizeListHead = new ListNode(1);
-		oddSizeListHead.next = new ListNode(2);
-		oddSizeListHead.next.next = new ListNode(3);
-		oddSizeListHead.next.next.next = new ListNode(2);
-		oddSizeListHead.next.next.next.next = new ListNode(1);
+		ListNode oddSizeListHead = createLinkedlist(new int[] {1,2,3,2,1});
 		printNodes(oddSizeListHead);
 		System.out.println("isPalindrome(oddSizeListHead)  " + isPalindrome(oddSizeListHead) + "\n");
 
-		
-		ListNode evenSizeListHead = new ListNode(1);
-		evenSizeListHead.next = new ListNode(2);
-		evenSizeListHead.next.next = new ListNode(3);
-		evenSizeListHead.next.next.next = new ListNode(3);
-		evenSizeListHead.next.next.next.next = new ListNode(2);
-		evenSizeListHead.next.next.next.next.next = new ListNode(1);
+		ListNode evenSizeListHead = createLinkedlist(new int[] {1,2,3,3,2,1});
 		printNodes(evenSizeListHead);
 		System.out.println("isPalindrome(evenSizeListHead)  " + isPalindrome(evenSizeListHead) + "\n");
 
-		
-		
-		ListNode nonPalindromeListHead = new ListNode(1);
-		nonPalindromeListHead.next = new ListNode(2);
-		nonPalindromeListHead.next.next = new ListNode(3);
-		nonPalindromeListHead.next.next.next = new ListNode(4);
-		nonPalindromeListHead.next.next.next.next = new ListNode(5);
-		nonPalindromeListHead.next.next.next.next.next = new ListNode(6);
+		ListNode nonPalindromeListHead = createLinkedlist(new int[] {1,2,3,4,5,6});
 		printNodes(nonPalindromeListHead);
 		System.out.println("isPalindrome(nonPalindromeListHead)  " + isPalindrome(nonPalindromeListHead) + "\n");
+
+		ListNode biglinkedlist = createLinkedlist(new int[] {-1,2,3,4,5,6,7,8,9,10,11,10,9,8,7,6,5,4,3,3,-1});
+		printNodes(biglinkedlist);
+		System.out.println("isPalindrome(biglinkedlist)  " + isPalindrome(biglinkedlist) + "\n");
 
 	}
 

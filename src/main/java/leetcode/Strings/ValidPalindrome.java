@@ -2,8 +2,7 @@ package leetcode.Strings;
 
 public class ValidPalindrome {
 	
-	   public static boolean isPalindrome(String s) {
-	        
+	   /*public static boolean isPalindrome(String s) {
 	        if(s.length() == 0 || s.length() ==1){
 	            return true;
 	        }
@@ -27,7 +26,7 @@ public class ValidPalindrome {
 	        return true;
 	    }
 	    
-	    private static char alphaNum(char input){
+	        private static char alphaNum(char input){
 	        if(input >= '0' && input <= '9'){
 	            return input;
 	        }else if( (input >= 'a' && input <= 'z') || (input >= 'A' && input <= 'Z')){
@@ -36,6 +35,39 @@ public class ValidPalindrome {
 	            return ' ';
 	        }
 	    }
+	    */
+	
+	
+	   public static boolean isPalindrome(String s) {
+	        if(s.length()==0) return true;
+	        int ia = 0;
+	        int ib = s.length()-1;
+	        s = s.toLowerCase();
+	        while(ia < ib){
+	            while(ia < s.length() && !alphanumeric(s.charAt(ia))){
+	                ia++;
+	            }
+	            while(ib >= 0 && !alphanumeric(s.charAt(ib))){
+	                ib--;
+	            }
+	            if(ia >= ib) return true;
+	            if(s.charAt(ia) != s.charAt(ib)) {
+	                 return false;
+	            }
+	            ia++;
+	            ib--;
+	        }
+	        return true;
+	    }
+	    
+	    private static boolean alphanumeric(char ch){
+	        if((ch >= 'a' && ch<='z') || (ch>='0' && ch<='9')) {
+	            return true;
+	        }
+	        return false;
+	    }
+	    
+	    
 	    
 	    private static char convertCapitalToSmall(char input){
 	    	if(input >= 'A' && input <= 'Z'){
@@ -47,12 +79,12 @@ public class ValidPalindrome {
 	    		return ' ';
 	    	}
 	    }
-	    
+	
 	  
 	    
 
 	public static void main(String[] args) {
-		System.out.println(" isPalindrome('A man, a plan, a canal: Panama') : " + isPalindrome("A man, a plan, a canal: Panama"));
+		//System.out.println(" isPalindrome('A man, a plan, a canal: Panama') : " + isPalindrome("A man, a plan, a canal: Panama"));
 		System.out.println(" isPalindrome('0P') : " + isPalindrome("0P"));
 		System.out.println(" isPalindrome('race a car') : " + isPalindrome("race a car"));
 		

@@ -55,6 +55,8 @@ public class STDIN {
 			catch (IOException e) {
 				System.out.println(e);
 			}
+	     
+	     System.out.println(readFiles.getBlackList());
 	}
 	
     /*Two ways to tokenize a String

@@ -1,6 +1,6 @@
 package leetcode.Trees;
 
-import leetcode.Trees.SymmetricTreeRecursive_Iterative.TreeNode;
+import static leetcode.Trees.TreeNode.*;
 
 /* Given an array where elements are sorted in ascending order, convert it to a height balanced BST.
 
@@ -24,61 +24,35 @@ import leetcode.Trees.SymmetricTreeRecursive_Iterative.TreeNode;
  * 
  * */
 public class ConvertSortedArrayToBST {
-	
-	public static TreeNode sortedArrayToBST(int[] nums) {
-        if(nums.length == 0 ){
-            return null;
-        }
-        return toBSTRec(nums, 0 , nums.length - 1);
-    }
     
-    public static TreeNode toBSTRec(int[] array, int ib, int ie){
-       if(ie < ib) {
-           return null;
-        }
-        int median =  ib + (ie - ib) /2 ;
-        TreeNode root = new TreeNode(array[median]);
-        root.left = toBSTRec(array, ib, median -1);
-        root.right = toBSTRec(array, median + 1, ie);
-        return root;
-    }
-    
-    public static boolean equal(TreeNode tree01, TreeNode tree02){
-    	if ((tree01 == null && tree02 !=null) || (tree01 != null && tree02 == null)){
-    		return false;
-    	}
-    	if(tree01 != null && tree02 != null){
-    		if(tree01.val != tree02.val){
-    			return false;
-    		}
-    		return equal(tree01.left, tree02.left) && equal(tree01.right, tree02.right);
-    	}
-    	return true;//both null
-    }
-    
-    public static  int findMedianValue(int[] array, int low, int high){
-    	return array[low + (high - low) /2];
-    	/* for odd (high - low) values, it rounds down to the smaller integer.
-    		So, the median will always be within (low, high) bound
-    	*/
-    }
+		public static TreeNode sortedArrayToBST(int[] nums) {
+	       return sortedArrayToBST(nums, 0, nums.length -1);
+	    }
+	    
+		public static TreeNode sortedArrayToBST(int[] nums, int a, int b) {
+	        if(b < a) return null;
+	        int mid = (a+b) / 2;
+	        TreeNode root = new TreeNode(nums[mid]);
+	        if(b == a) return root;
+	        root.left = sortedArrayToBST(nums, a , mid -1);
+	        root.right = sortedArrayToBST(nums, mid + 1 , b);
+	        return root;
+	    }
 
+		 static int findMedianValue(int[] nums, int low, int high) {
+			return nums[(low+high)/2];
+		}
+		 
 	public static void main(String[] args) {
-		TreeNode root = new TreeNode(0);
-		root.left = new TreeNode(-3);
-		root.right = new TreeNode(9);
-		root.left.left = new TreeNode(-10);
-		root.right.left = new TreeNode(5);
-		TreeNode rootFound = sortedArrayToBST(new int[] {-10, -3, 0 , 5 , 9});
-		System.out.println("  equal(root, rootFound) "  + equal(root, rootFound));
-		
-		
-		System.out.println("\narray[low + (high - low) /2] : (always safe to use)");
-		System.out.println("findMedianValue(new int[] {10} , 0, 0) : "  + findMedianValue(new int[] {10} , 0, 0) );
+		TreeNode root_case0 = sortedArrayToBST(new int[] {-10,-3,0,5,9});
+		System.out.println(levelOrder(root_case0));
+
+		System.out.println("\narray[(low+hight) /2] : (always safe to use)");
+		System.out.println("findMedianValue(new int[] {10} , 0, 0) : "   + findMedianValue(new int[] {10} , 0, 0));
 		System.out.println("findMedianValue(new int[] {10, 20} , 0, 1) : "  + findMedianValue(new int[] {10, 20} , 0, 1) );
 		System.out.println("findMedianValue(new int[] {10, 20, 30} , 0, 2) : "  + findMedianValue(new int[] {10, 20, 30} , 0, 2) );
 		System.out.println("findMedianValue(new int[] {10, 20, 30} , 1, 2) : "  + findMedianValue(new int[] {10, 20, 30} , 1, 2) );
-		System.out.println("   array[low + (high - low) /2] :\n     for odd (high - low) values, it rounds down to the smaller integer.\n     So, the median will always be within (low, high) bound");
+		System.out.println("   array[(low+high)/2] :\n     for odd (high - low) values, it rounds down to the smaller integer.\n     So, the median will always be within (low, high) bound");
 
 
 	}

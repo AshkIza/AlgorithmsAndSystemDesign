@@ -33,22 +33,19 @@ public class MaximumDepthofBinaryTree {
 	
 	
 	
-    public static int maxDepth(TreeNode root) {
-        if(root == null){
-            return 0;
-        }
-        if(root.left == null && root.right == null){
-            return 1;
-        }
-        return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
-        
-    }
+	  public static int maxDepth(TreeNode root) {
+	        if(root==null)  return 0;
+	        else if(isLeaf(root)) return 1;
+	        return 1 + Math.max(maxDepth(root.left),  maxDepth(root.right));
+	    }
+	    
+	 static boolean  isLeaf(TreeNode node){
+	        return node.left == null && node.right == null;
+	  }
 
 	public static void main(String[] args) {
 		System.out.println("  Tree = Recursive (90% of problems) " );
-		System.out.println("  Tree = Recursive (90% of problems) " );
-		System.out.println("  Tree = Recursive (90% of problems) " );
-		System.out.println("  Tree = Recursive (90% of problems) " );
+		System.out.println("  if using Iterative for tree -> use Queue aka LinkedList \n\n" );
 
 
 	}

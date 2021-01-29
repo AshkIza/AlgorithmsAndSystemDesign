@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
-import leetcode.Trees.SymmetricTreeRecursive_Iterative.TreeNode;
+import leetcode.Trees.TreeNode;
 
 /*  Given a binary tree, return the inorder traversal of its nodes' values.
 

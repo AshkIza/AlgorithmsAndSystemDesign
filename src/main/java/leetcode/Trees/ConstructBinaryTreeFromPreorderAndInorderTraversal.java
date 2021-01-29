@@ -1,6 +1,6 @@
 package leetcode.Trees;
 
-import leetcode.Trees.SymmetricTreeRecursive_Iterative.TreeNode;
+import leetcode.Trees.TreeNode;
 
 /*  Construct Binary Tree from Preorder and Inorder Traversal
 	Given preorder and inorder traversal of a tree, construct the binary tree.

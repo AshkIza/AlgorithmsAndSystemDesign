@@ -40,7 +40,7 @@ public class JavaCollections {
 		System.out.println(" arrayList :" + Arrays.toString(arrayList.toArray()));
 		arrayList.remove(new Integer(4));
 		System.out.println(" arrayList.remove(new Integer(4)) :" );
-		System.out.println(" arrayList :" + Arrays.toString(arrayList.toArray()));
+		System.out.println(" arrayList :" + arrayList.toString());
 		System.out.println("\n" );
 
 		
@@ -49,16 +49,20 @@ public class JavaCollections {
 		linkedList.add("Two");
 		linkedList.add("Tree");
 		linkedList.add("Four");
+		linkedList.add("Five");
 		System.out.println(" linkedList :" + Arrays.toString(linkedList.toArray()));
-		linkedList.remove();//returns the head of the list or the element present at the head of the list.
+		linkedList.remove();//returns the head of the list or the element present at the head of the list.		
 		System.out.println(" linkedList.remove()  IMPLEMENTED in LinkedList (returns the head of the list)");
-		System.out.println(" linkedList :" + Arrays.toString(linkedList.toArray()));
+		System.out.println(" linkedList :" + linkedList.toString());
+		System.out.println(" linkedList.removeLast() : LinkedList is doubly-linkedlist");
+		linkedList.removeLast();
+		System.out.println(" linkedList :" + linkedList.toString());
 		linkedList.remove(1);
 		System.out.println(" linkedList.remove(1) :" );
-		System.out.println(" linkedList :" + Arrays.toString(linkedList.toArray()));
+		System.out.println(" linkedList :" + linkedList.toString());
 		linkedList.remove(new String("Four"));
 		System.out.println(" linkedList.remove(new String('Four') :" );
-		System.out.println(" linkedList :" + Arrays.toString(linkedList.toArray()));
+		System.out.println(" linkedList :" + linkedList.toString());
 		System.out.println("\n" );
 
 		
@@ -158,6 +162,13 @@ public class JavaCollections {
        daysOfWeek.remove("Saturday");
        System.out.println("daysOfWeek.remove(\"Saturday\") , daysOfWeek : " + daysOfWeek);
        System.out.println("Removing Elements from Java Collections (while iterating through) : ");
+       System.out.println("use loop for iterating, but NOT removing --> concurrenct access modification error! use iterator instead");
+       for(String e : daysOfWeek) {
+    	   if(e.startsWith("T")) {
+    		   daysOfWeek.remove(e);
+    	   }
+       }
+       
        Iterator<String> it = daysOfWeek.iterator();
        while(it.hasNext()) {
     	   if(it.next().startsWith("T")) {

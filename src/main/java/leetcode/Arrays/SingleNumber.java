@@ -49,10 +49,22 @@ public class SingleNumber {
     }
 	
 	
+	 public static int singleNumberXOR(int[] nums) {
+	        int single = 0;
+	        for(int num : nums){
+	            single ^= num;
+	        }
+	        return single;
+	    }
+	
+	
 	
 	public static void main(String[] args) {
 		int[] nums01 = new int[] {4,1,2,1,2};
-		System.out.println("singleNumber({4,1,2,1,2}) is : " + singleNumber(nums01) +  " -  O(N) time with O(N) extra space (used hashing)");
+		System.out.println("singleNumber({4,1,2,1,2}) is : " + singleNumber(nums01) +  " - \n O(N) time with O(N) extra space (used hashing)");
+	
+		System.out.println("singleNumberXOR({4,1,2,1,2}) is : " + singleNumberXOR(nums01) +  " - \n O(N) time with O(1) extra space (noticing special characteritics of data -> all elements comming twice except one element --> a ^ a = 0)");
+
 	}
 	
 	/*  How to get the first item from Set ? 
